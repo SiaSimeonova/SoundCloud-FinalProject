@@ -12,7 +12,7 @@ import java.sql.Connection;
 
 public class Demo {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 		
 //		Connection con=DBConnection.getInstance().getCon();
 //		PreparedStatement ps=con.prepareStatement("insert into users values(null,'ico','parola','slavozar',"

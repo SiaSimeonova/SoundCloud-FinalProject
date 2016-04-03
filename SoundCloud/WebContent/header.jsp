@@ -1,3 +1,4 @@
+<%@page import="POJO.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -14,30 +15,33 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	<style>
-	#search_form{
-	 position: relative;
-    left: 130px;
-    top:10px;}
-	#keyword { 
-	
-    border: 1px solid #848484; 
-    -webkit-border-radius: 30px; 
-    -moz-border-radius: 30px; 
-    border-radius: 30px; 
-    outline:0; 
-    height:25px; 
-    width: 275px; 
-    padding-left:10px; 
-    padding-right:10px; 
-  }
-	</style>
+<style>
+#search_form{
+
+position: relative;
+ top: -40px;
+ left: 70%;
+}
+
+#keyword {
+	border: 1px solid #848484;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+	outline: 0;
+	height: 25px;
+	width: 275px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+</style>
 </head>
 <body>
-	<%if(session.getAttribute("user")==null){
-		out.print("Ne hitruvai be mishkoo..");
-		return;
-	}
+	<%
+		if (session.getAttribute("user") == null) {
+			out.print("Ne hitruvai be mishkoo..");
+			return;
+		}
 	%>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container-fluid">
@@ -49,22 +53,37 @@
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="#">Home</a></li>
 			<li><a href="#">Collection</a></li>
-			
+
 			<form id="search_form" action="subscribe" method="post">
-                
-                <input class="text" placeholder="Search for your favorite tracks "id="keyword" type="text" name="searchWord"  />
-                <input class="btn btn-danger" id="subscribe_submit" type="submit" value="Search" />
-            </form>
+
+				<input class="text" placeholder="Search for your favorite tracks "
+					id="keyword" type="text" name="searchWord" /> <input
+					class="btn btn-danger" id="subscribe_submit" type="submit"
+					value="Search" />
+			</form>
 
 
 
 		</ul>
-		 <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Hello  <%=session.getAttribute("user") %></a></li>
-      <li><a href="./index.html"><span class="glyphicon glyphicon-log-in"></span> Logout <%session.invalidate(); %></a></li>
-    </ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="#"><span class="glyphicon glyphicon-user"></span>
+					Hello <%=((User)session.getAttribute("user")).getUserName()%></a></li>
+			<li class="dropdown"><a class="dropdown-toggle"
+				data-toggle="dropdown" href="#">Options <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="#">Profile</a></li>
+					
+				</ul></li>
+
+
+			<li><a href="./index.html"><span
+					class="glyphicon glyphicon-log-in"></span> Logout <%
+				session.invalidate();
+			%></a></li>
+		</ul>
+
 	</div>
-	
+
 	</nav>
 </body>
 </html>

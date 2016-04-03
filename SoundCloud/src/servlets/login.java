@@ -1,6 +1,8 @@
 package servlets;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import DAO.UserDAO;
 import DAO.UserDAOException;
+import POJO.User;
 
 /**
  * Servlet implementation class login
@@ -25,15 +28,26 @@ public class login extends HttpServlet {
 		String user=request.getParameter("username");
 		String pass=request.getParameter("password");
 		boolean isThereSuchUser=false;
+		try {
+			isThereSuchUser=new UserDAO().isThereSuchUser(user, pass);
+		} catch (UserDAOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		if(isThereSuchUser){
+			
+			HttpSession session=request.getSession();
+			User userToBeAdded=null;
 			try {
-				isThereSuchUser=new UserDAO().isThereSuchUser(user,pass);
+				
+				userToBeAdded = new UserDAO().getUser(user);
 			} catch (UserDAOException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		if(isThereSuchUser){
-			HttpSession session=request.getSession();
-			session.setAttribute("user", user);
-			response.sendRedirect("./header.jsp");
+			
+			session.setAttribute("user", userToBeAdded);
+			response.sendRedirect("./profile.jsp");
 		}
 		else{
 			response.getWriter().println("Nema takuv");

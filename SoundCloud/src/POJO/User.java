@@ -1,6 +1,6 @@
 package POJO;
 
-import java.util.List;
+import DAO.IUserDAO;
 
 public class User {
 	private String userName;
@@ -11,10 +11,11 @@ public class User {
 	private String gender;
 	private String mail;
 	private String picPath;
-	private List<Playlist> playlists;
 	
 	
-
+	public User(){
+		
+	}
 	public User(String userName, String pass, String firstName, String surname, int age, String gender, String mail,String picPath) {
 		
 		this.setUserName(userName);
@@ -27,6 +28,11 @@ public class User {
 		this.setPicPath(picPath);
 	}
 
+	public User(String username, String password, String email) {
+		this.setUserName(username);
+		this.setPass(password);
+		this.setMail(email);
+	}
 	public String getUserName() {
 		return userName;
 	}
@@ -82,7 +88,7 @@ public class User {
 	}
 
 	public void setGender(String gender) {
-		if (gender.equalsIgnoreCase("male") || (gender.equalsIgnoreCase("female"))) {
+		 {
 			this.gender = gender;
 		}
 	}
@@ -101,14 +107,6 @@ public class User {
 
 	public void setPicPath(String picPath) {
 		this.picPath = picPath;
-	}
-
-	public List<Playlist> getPlaylists() {
-		return playlists;
-	}
-
-	public void setPlaylists(List<Playlist> playlists) {
-		this.playlists = playlists;
 	}
 
 	

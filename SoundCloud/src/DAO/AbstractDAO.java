@@ -4,12 +4,10 @@ import java.sql.Connection;
 
 import db.DBConnection;
 
-public abstract class AbstractDAO {
+public class AbstractDao {
 	private final Connection con = DBConnection.getInstance().getCon();
 
 	public Connection getCon() {
 		return con;
 	}
-	
 }
-
