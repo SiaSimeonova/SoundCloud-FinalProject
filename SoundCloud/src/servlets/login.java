@@ -1,8 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.sql.SQLException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,7 +26,7 @@ public class login extends HttpServlet {
 		String pass=request.getParameter("password");
 		boolean isThereSuchUser=false;
 			try {
-				isThereSuchUser=new UserDAO().isThereSuchUser(user);
+				isThereSuchUser=new UserDAO().isThereSuchUser(user,pass);
 			} catch (UserDAOException e) {
 				e.printStackTrace();
 			}

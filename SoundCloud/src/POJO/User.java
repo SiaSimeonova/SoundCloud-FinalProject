@@ -1,6 +1,6 @@
 package POJO;
 
-import DAO.IUserDAO;
+import java.util.List;
 
 public class User {
 	private String userName;
@@ -11,6 +11,7 @@ public class User {
 	private String gender;
 	private String mail;
 	private String picPath;
+	private List<Playlist> playlists;
 	
 	
 
@@ -100,6 +101,14 @@ public class User {
 
 	public void setPicPath(String picPath) {
 		this.picPath = picPath;
+	}
+
+	public List<Playlist> getPlaylists() {
+		return playlists;
+	}
+
+	public void setPlaylists(List<Playlist> playlists) {
+		this.playlists = playlists;
 	}
 
 	

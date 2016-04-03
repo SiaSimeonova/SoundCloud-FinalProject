@@ -14,6 +14,7 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 	private static final String UPDATE_USER_SQL = "UPDATE Users SET pasword = ?,"
 			+ " name = ?, surname = ?, years = ?, gender = ?, e-mail = ? WHERE username = ?;";
 	private static final String FIND_USER_BY_USERNAME_SQL = "SELECT * FROM Users WHERE username = ?";
+	private static final String PRINT_FOLLOWERS ="select count(idUserFollower) from mydb.followers where idUserFollowing = ?;";
 
 	public int addUser(User user) throws UserDAOException {
 		if (user != null) {
@@ -49,7 +50,7 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 		}
 	}
 
-	public boolean isThereSuchUser(String user) throws UserDAOException {
+	public boolean isThereSuchUser(String user, String password) throws UserDAOException {
 		PreparedStatement ps;
 		try {
 			ps = DBConnection.getInstance().getCon().prepareStatement(SELECT_USER_SQL);
@@ -146,7 +147,17 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 
 	@Override
 	public int getFollowers(User user) throws UserDAOException {
-		// TODO Auto-generated method stub
-		return 0;
+		int res = 0;
+		try {
+			PreparedStatement ps = getCon().prepareStatement(PRINT_FOLLOWERS);
+			ps.setString(1, user.getUserName());
+			ResultSet result = ps.executeQuery();
+			result.next();
+			res=result.getInt(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new UserDAOException("Your fowwolers cannot be listed at the moment, please try again later!", e);
+		}
+		return res;
 	}
 }
