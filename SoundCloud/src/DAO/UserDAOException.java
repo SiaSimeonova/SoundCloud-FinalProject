@@ -31,5 +31,4 @@ public class UserDAOException extends Exception{
 		super(cause);
 		// TODO Auto-generated constructor stub
 	}
-
 }

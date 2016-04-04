@@ -1,7 +1,5 @@
 package DAO;
 
-import java.sql.SQLException;
-
 import POJO.User;
 
 public interface IUserDAO {
@@ -9,9 +7,8 @@ public interface IUserDAO {
 	public boolean  isThereSuchUser(String user,String password) throws UserDAOException;
 	public int editUser(User user) throws UserDAOException;
 	public void deteteUser(User user) throws UserDAOException;
-	public User getUser(String name) throws UserDAOException, SQLException;
+	public User getUser(String name) throws UserDAOException;
 	public int followUser(User user,User userToFollow) throws UserDAOException;
 	public int getFollowing(User user) throws UserDAOException;
 	public int getFollowers(User user) throws UserDAOException;
-
 }

@@ -1,6 +1,6 @@
 package POJO;
 
-import DAO.IUserDAO;
+import java.util.List;
 
 public class User {
 	private String userName;
@@ -11,36 +11,34 @@ public class User {
 	private String gender;
 	private String mail;
 	private String picPath;
+	private List<Playlist> playlists;
 	
 	
-	public User(){
-		
-	}
+
 	public User(String userName, String pass, String firstName, String surname, int age, String gender, String mail,String picPath) {
-		
-		this.setUserName(userName);
-		this.setPass(pass);
+		this(userName, pass, mail);
 		this.setFirstName(firstName);
 		this.setSurname(surname);
 		this.setAge(age);
 		this.setGender(gender);
-		this.setMail(mail);
 		this.setPicPath(picPath);
+		
+	}
+	
+public User(String userName, String pass, String mail) {
+		this.userName=userName;
+		this.setPass(pass);
+		this.setMail(mail);
+		this.setFirstName("empty");
+		this.setSurname("empty");
+		this.setAge(0);
+		this.setGender("empty");
+		this.setPicPath("empty");
 	}
 
-	public User(String username, String password, String email) {
-		this.setUserName(username);
-		this.setPass(password);
-		this.setMail(email);
-	}
+
 	public String getUserName() {
 		return userName;
-	}
-
-	private void setUserName(String user) {
-		if (user != null && !user.equals("")) {
-			this.userName = user;
-		}
 	}
 
 	public String getPass() {
@@ -88,8 +86,10 @@ public class User {
 	}
 
 	public void setGender(String gender) {
-		 {
+		if (gender.equalsIgnoreCase("male") || gender.equalsIgnoreCase("female")) {
 			this.gender = gender;
+		}else{
+			this.gender = "undefined";
 		}
 	}
 
@@ -109,5 +109,11 @@ public class User {
 		this.picPath = picPath;
 	}
 
-	
+	public List<Playlist> getPlaylists() {
+		return playlists;
+	}
+
+	public void setPlaylists(List<Playlist> playlists) {
+		this.playlists = playlists;
+	}
 }
