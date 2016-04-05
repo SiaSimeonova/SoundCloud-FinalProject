@@ -1,5 +1,6 @@
 package POJO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Playlist {
@@ -7,10 +8,10 @@ public class Playlist {
 	private String name;
 	private List <AudioFile> myFiles;
 	
-	public Playlist(String name, List<AudioFile> myFiles) {
+	public Playlist(String name) {
 		super();
 		this.name = name;
-		this.myFiles = myFiles;
+		this.myFiles = new ArrayList <AudioFile>();
 	}
 
 

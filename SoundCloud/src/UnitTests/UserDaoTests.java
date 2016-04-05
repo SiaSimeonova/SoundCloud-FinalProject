@@ -65,11 +65,35 @@ public class UserDaoTests {
 		System.out.println("Edited " + age);
 	}
 
-	@Test(dataProvider = "followers")
+	@Test(dataProvider = "followers", enabled = false)
 	public static void addFollower(User userToFollow, User follower) throws UserDAOException {
 		try {
 			int result = DAO.UserDAO.class.newInstance().followUser(userToFollow, follower);
 			System.out.println(result);
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test (dataProvider = "user", enabled = false)
+	public static void TestCountFollowers(User followed) throws UserDAOException {
+		try {
+			int followers = DAO.UserDAO.class.newInstance().getFollowers(followed);
+			System.out.println(followers);
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test (dataProvider = "user")
+	public static void TestCountFollowing(User follower) throws UserDAOException {
+		try {
+			int followers = DAO.UserDAO.class.newInstance().getFollowing(follower);
+			System.out.println(followers);
 		} catch (InstantiationException e) {
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {

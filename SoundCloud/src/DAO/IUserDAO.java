@@ -16,5 +16,6 @@ public interface IUserDAO {
 	public int getFollowers(User user) throws UserDAOException;
 	public int getAudioFiles(User user) throws UserDAOException;
 	public List<AudioFile> getFollowersAudios(User user) throws UserDAOException;
+	public List<AudioFile> getMyAudios(User user) throws UserDAOException;
 	public List<AudioFile> getFollowersAudiosByDate(User user) throws UserDAOException;
 }

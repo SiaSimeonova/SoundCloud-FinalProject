@@ -1,84 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="5" passed="5">
+<testng-results skipped="0" failed="0" total="11" passed="11">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="911" started-at="2016-04-04T11:57:38Z" finished-at="2016-04-04T11:57:39Z">
+  <suite name="Default suite" duration-ms="753" started-at="2016-04-05T13:18:58Z" finished-at="2016-04-05T13:18:59Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="911" started-at="2016-04-04T11:57:38Z" finished-at="2016-04-04T11:57:39Z">
+    <test name="Default test" duration-ms="753" started-at="2016-04-05T13:18:58Z" finished-at="2016-04-05T13:18:59Z">
       <class name="UnitTests.UserDaoTests">
-        <test-method status="PASS" signature="addFollower(POJO.User, POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="addFollower" duration-ms="556" started-at="2016-04-04T14:57:38Z" data-provider="followers" finished-at="2016-04-04T14:57:38Z">
+        <test-method status="PASS" signature="TestCountFollowing(POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="TestCountFollowing" duration-ms="593" started-at="2016-04-05T16:18:58Z" data-provider="user" finished-at="2016-04-05T16:18:58Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[POJO.User@1ebec15]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[POJO.User@1bcffb5]]>
+                <![CDATA[POJO.User@fb434]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- addFollower -->
-        <test-method status="PASS" signature="addFollower(POJO.User, POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="addFollower" duration-ms="40" started-at="2016-04-04T14:57:38Z" data-provider="followers" finished-at="2016-04-04T14:57:38Z">
+        </test-method> <!-- TestCountFollowing -->
+        <test-method status="PASS" signature="TestCountFollowing(POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="TestCountFollowing" duration-ms="3" started-at="2016-04-05T16:18:58Z" data-provider="user" finished-at="2016-04-05T16:18:58Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[POJO.User@adede5]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[POJO.User@1928643]]>
+                <![CDATA[POJO.User@49fd9b]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- addFollower -->
-        <test-method status="PASS" signature="addFollower(POJO.User, POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="addFollower" duration-ms="132" started-at="2016-04-04T14:57:38Z" data-provider="followers" finished-at="2016-04-04T14:57:39Z">
+        </test-method> <!-- TestCountFollowing -->
+        <test-method status="PASS" signature="TestCountFollowing(POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="TestCountFollowing" duration-ms="6" started-at="2016-04-05T16:18:58Z" data-provider="user" finished-at="2016-04-05T16:18:58Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[POJO.User@17faa95]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[POJO.User@127982]]>
+                <![CDATA[POJO.User@1c24521]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- addFollower -->
-        <test-method status="PASS" signature="addFollower(POJO.User, POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="addFollower" duration-ms="32" started-at="2016-04-04T14:57:39Z" data-provider="followers" finished-at="2016-04-04T14:57:39Z">
+        </test-method> <!-- TestCountFollowing -->
+        <test-method status="PASS" signature="TestCountFollowing(POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="TestCountFollowing" duration-ms="3" started-at="2016-04-05T16:18:58Z" data-provider="user" finished-at="2016-04-05T16:18:58Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[POJO.User@a86356]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[POJO.User@e81285]]>
+                <![CDATA[POJO.User@1610302]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- addFollower -->
-        <test-method status="PASS" signature="addFollower(POJO.User, POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="addFollower" duration-ms="73" started-at="2016-04-04T14:57:39Z" data-provider="followers" finished-at="2016-04-04T14:57:39Z">
+        </test-method> <!-- TestCountFollowing -->
+        <test-method status="PASS" signature="TestCountFollowing(POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="TestCountFollowing" duration-ms="4" started-at="2016-04-05T16:18:58Z" data-provider="user" finished-at="2016-04-05T16:18:58Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[POJO.User@9ba398]]>
+                <![CDATA[POJO.User@1e3c938]]>
               </value>
             </param>
-            <param index="1">
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestCountFollowing -->
+        <test-method status="PASS" signature="TestCountFollowing(POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="TestCountFollowing" duration-ms="3" started-at="2016-04-05T16:18:58Z" data-provider="user" finished-at="2016-04-05T16:18:58Z">
+          <params>
+            <param index="0">
               <value>
                 <![CDATA[POJO.User@17b4f4c]]>
               </value>
@@ -86,7 +72,62 @@
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- addFollower -->
+        </test-method> <!-- TestCountFollowing -->
+        <test-method status="PASS" signature="TestCountFollowing(POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="TestCountFollowing" duration-ms="2" started-at="2016-04-05T16:18:58Z" data-provider="user" finished-at="2016-04-05T16:18:58Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[POJO.User@9b1010]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestCountFollowing -->
+        <test-method status="PASS" signature="TestCountFollowing(POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="TestCountFollowing" duration-ms="2" started-at="2016-04-05T16:18:58Z" data-provider="user" finished-at="2016-04-05T16:18:58Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[POJO.User@10143d3]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestCountFollowing -->
+        <test-method status="PASS" signature="TestCountFollowing(POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="TestCountFollowing" duration-ms="1" started-at="2016-04-05T16:18:58Z" data-provider="user" finished-at="2016-04-05T16:18:58Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[POJO.User@1b92f0a]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestCountFollowing -->
+        <test-method status="PASS" signature="TestCountFollowing(POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="TestCountFollowing" duration-ms="2" started-at="2016-04-05T16:18:58Z" data-provider="user" finished-at="2016-04-05T16:18:58Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[POJO.User@1ef968d]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestCountFollowing -->
+        <test-method status="PASS" signature="TestCountFollowing(POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="TestCountFollowing" duration-ms="27" started-at="2016-04-05T16:18:58Z" data-provider="user" finished-at="2016-04-05T16:18:59Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[POJO.User@136e637]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestCountFollowing -->
       </class> <!-- UnitTests.UserDaoTests -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

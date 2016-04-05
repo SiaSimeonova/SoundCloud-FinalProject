@@ -1,5 +1,6 @@
 package POJO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
@@ -11,22 +12,21 @@ public class User {
 	private String gender;
 	private String mail;
 	private String picPath;
+	private List<AudioFile> myAudios;
 	private List<Playlist> playlists;
-	
-	
 
-	public User(String userName, String pass, String firstName, String surname, int age, String gender, String mail,String picPath) {
+	public User(String userName, String pass, String firstName, String surname, int age, String gender, String mail,
+			String picPath) {
 		this(userName, pass, mail);
 		this.setFirstName(firstName);
 		this.setSurname(surname);
 		this.setAge(age);
 		this.setGender(gender);
 		this.setPicPath(picPath);
-		
 	}
-	
-public User(String userName, String pass, String mail) {
-		this.userName=userName;
+
+	public User(String userName, String pass, String mail) {
+		this.userName = userName;
 		this.setPass(pass);
 		this.setMail(mail);
 		this.setFirstName("empty");
@@ -34,8 +34,9 @@ public User(String userName, String pass, String mail) {
 		this.setAge(0);
 		this.setGender("empty");
 		this.setPicPath("empty");
+		myAudios = new ArrayList<AudioFile>();
+		playlists = new ArrayList<Playlist>();
 	}
-
 
 	public String getUserName() {
 		return userName;
@@ -88,7 +89,7 @@ public User(String userName, String pass, String mail) {
 	public void setGender(String gender) {
 		if (gender.equalsIgnoreCase("male") || gender.equalsIgnoreCase("female")) {
 			this.gender = gender;
-		}else{
+		} else {
 			this.gender = "undefined";
 		}
 	}
@@ -117,5 +118,12 @@ public User(String userName, String pass, String mail) {
 		this.playlists = playlists;
 	}
 
-	
+	public List<AudioFile> getMyAudios() {
+		return myAudios;
+	}
+
+	public void setMyAudios(List<AudioFile> myAudios) {
+		this.myAudios = myAudios;
+	}
+
 }

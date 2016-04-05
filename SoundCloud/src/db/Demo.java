@@ -1,14 +1,14 @@
 package db;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-
-import org.apache.tomcat.jni.User;
-
-import DAO.IUserDAO;
-import DAO.UserDAO;
-
-import java.sql.Connection;
+//import java.sql.PreparedStatement;
+//import java.sql.SQLException;
+//
+//import org.apache.tomcat.jni.User;
+//
+//import DAO.IUserDAO;
+//import DAO.UserDAO;
+//
+//import java.sql.Connection;
 
 public class Demo {
 
