@@ -14,11 +14,11 @@ public class AudioFile {
 	private int shares;
 	private int downloads;
 	private int timesPlayed;
-	private User owner;
+	private String ownersName;
 	
 	
 	public AudioFile(String uRL, String category, String name, String autor, String description, String picture,
-			boolean isPrivate, int likes, int reposts, int shares, int downloads, int timesPlayed, User owner) {
+			boolean isPrivate, int likes, int reposts, int shares, int downloads, int timesPlayed, String ownersName) {
 		super();
 		URL = uRL;
 		this.category = category;
@@ -32,8 +32,25 @@ public class AudioFile {
 		this.shares = shares;
 		this.downloads = downloads;
 		this.timesPlayed = timesPlayed;
-		this.owner = owner;
+		this.ownersName = ownersName;
 	}
+
+	public AudioFile(String uRL, String name, String ownersName) {
+		super();
+		URL = uRL;
+		this.name = name;
+		this.autor = "empty";
+		this.description = "empty";
+		this.picture = "empty";
+		this.isPrivate = false;
+		this.likes = 0;
+		this.reposts = 0;
+		this.shares = 0;
+		this.downloads = 0;
+		this.timesPlayed = 0;
+		this.ownersName = ownersName;
+	}
+
 
 
 	public String getURL() {
@@ -155,14 +172,12 @@ public class AudioFile {
 		this.timesPlayed = timesPlayed;
 	}
 
-
-	public User getOwner() {
-		return owner;
+	public String getOwnersName() {
+		return ownersName;
 	}
 
-
-	public void setOwner(User owner) {
-		this.owner = owner;
+	public void setOwnersName(String ownersName) {
+		this.ownersName = ownersName;
 	}
-	
+
 }
