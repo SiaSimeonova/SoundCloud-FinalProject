@@ -3,18 +3,23 @@ package DAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
+import POJO.AudioFile;
 import POJO.User;
 import db.DBConnection;
 
 public class UserDAO extends AbstractDAO implements IUserDAO {
 	private static final String INSERT_NEW_USER_SQL = "INSERT INTO users VALUES (null,?,?,?,?,?,?,?,?)";
 	private static final String SELECT_USER_SQL = "SELECT * FROM users WHERE username=?";
-	private static final String DELETE_USER_SQL = "DELETE * FROM users WHERE username=? and pasword=?";
+	private static final String DELETE_USER_SQL = "DELETE FROM users WHERE username=?";
 	private static final String UPDATE_USER_SQL = "UPDATE users SET pasword = ?, name = ?, surname = ?, years = ?, gender = ?, picture = ? WHERE username = ?";
 	private static final String FIND_USER_BY_USERNAME_SQL = "SELECT * FROM users WHERE username = ?";
-	private static final String PRINT_FOLLOWERS = "select count(idUserFollower) from mydb.followers where idUserFollowing = ?";
-
+	private static final String COUNT_FOLLOWERS = "select count(idUserFollower) from mydb.followers where idUserFollowing = ?";
+	private static final String ADD_FOLLOWERS = "insert into followers values (?, ?)";
+	
+	
+	
 	public int addUser(User user) throws UserDAOException {
 		if (user != null) {
 			PreparedStatement ps = null;
@@ -82,9 +87,9 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 					ResultSet result = ps.getGeneratedKeys();
 					if (result.next()) {
 						result.next();
-						return result.getInt(2);
+						return result.getInt(1);
 					}else{
-						return 100;
+						return 0;
 					}
 
 				} catch (SQLException e) {
@@ -114,7 +119,6 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 		try {
 			ps = getCon().prepareStatement(DELETE_USER_SQL);
 			ps.setString(1, user.getUserName());
-			ps.setString(2, user.getPass());
 			ps.executeUpdate();
 		} catch (Exception e) {
 			throw new UserDAOException("The user cannot be deleted right now, please try again.", e);
@@ -146,9 +150,19 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 	}
 
 	@Override
-	public int followUser(User user, User userToFollow) throws UserDAOException {
-		// TODO Auto-generated method stub
-		return 0;
+	public int followUser(User userToFollow, User follower) throws UserDAOException {
+		try {
+			PreparedStatement ps = getCon().prepareStatement(ADD_FOLLOWERS);
+			String fowolled1 = userToFollow.getUserName();
+			String follower1 = follower.getUserName();
+			ps.setString(1, fowolled1);
+			ps.setString(2, follower1);
+		    ps.executeUpdate();
+			return 1;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new UserDAOException("The user to follow can not be added at the moment, please try again later!", e);
+		}
 	}
 
 	@Override
@@ -161,15 +175,33 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 	public int getFollowers(User user) throws UserDAOException {
 		int res = 0;
 		try {
-			PreparedStatement ps = getCon().prepareStatement(PRINT_FOLLOWERS);
+			PreparedStatement ps = getCon().prepareStatement(COUNT_FOLLOWERS);
 			ps.setString(1, user.getUserName());
 			ResultSet result = ps.executeQuery();
 			result.next();
 			res = result.getInt(1);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new UserDAOException("Your fowwolers cannot be listed at the moment, please try again later!", e);
+			throw new UserDAOException("Your followers cannot be listed at the moment, please try again later!", e);
 		}
 		return res;
+	}
+
+	@Override
+	public int getAudioFiles(User user) throws UserDAOException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<AudioFile> getFollowersAudios(User user) throws UserDAOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<AudioFile> getFollowersAudiosByDate(User user) throws UserDAOException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

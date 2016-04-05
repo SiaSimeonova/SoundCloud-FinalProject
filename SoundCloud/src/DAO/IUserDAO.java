@@ -1,5 +1,8 @@
 package DAO;
 
+import java.util.List;
+
+import POJO.AudioFile;
 import POJO.User;
 
 public interface IUserDAO {
@@ -11,4 +14,7 @@ public interface IUserDAO {
 	public int followUser(User user,User userToFollow) throws UserDAOException;
 	public int getFollowing(User user) throws UserDAOException;
 	public int getFollowers(User user) throws UserDAOException;
+	public int getAudioFiles(User user) throws UserDAOException;
+	public List<AudioFile> getFollowersAudios(User user) throws UserDAOException;
+	public List<AudioFile> getFollowersAudiosByDate(User user) throws UserDAOException;
 }

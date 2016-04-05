@@ -19,21 +19,24 @@ import POJO.User;
 @WebServlet("/register")
 public class register extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username=request.getParameter("username");
-		String password=request.getParameter("password");
-		String email=request.getParameter("email");
-		
-	try {
-		new UserDAO().addUser(new User(username, password,  email));
-	} catch (UserDAOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	response.getWriter().append("Registration complete");
-		
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		String email = request.getParameter("email");
+		String firstName = request.getParameter("firstName");
+		String lastName = request.getParameter("lastName");
+		int age = Integer.parseInt(request.getParameter("age"));
+		String gender = request.getParameter("gender");
+		String picPath = request.getParameter("picPath");
+
+		try {
+			new UserDAO().addUser(new User(username, password, firstName, lastName, age, gender, email, picPath));
+		} catch (UserDAOException e) {
+			e.printStackTrace();
+		}
+		response.getWriter().append("Registration complete");
 
 	}
 

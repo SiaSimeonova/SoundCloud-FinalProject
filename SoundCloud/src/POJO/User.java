@@ -116,4 +116,6 @@ public User(String userName, String pass, String mail) {
 	public void setPlaylists(List<Playlist> playlists) {
 		this.playlists = playlists;
 	}
+
+	
 }

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="5" passed="5">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="911" started-at="2016-04-04T11:57:38Z" finished-at="2016-04-04T11:57:39Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="911" started-at="2016-04-04T11:57:38Z" finished-at="2016-04-04T11:57:39Z">
+      <class name="UnitTests.UserDaoTests">
+        <test-method status="PASS" signature="addFollower(POJO.User, POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="addFollower" duration-ms="556" started-at="2016-04-04T14:57:38Z" data-provider="followers" finished-at="2016-04-04T14:57:38Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[POJO.User@1ebec15]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[POJO.User@1bcffb5]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addFollower -->
+        <test-method status="PASS" signature="addFollower(POJO.User, POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="addFollower" duration-ms="40" started-at="2016-04-04T14:57:38Z" data-provider="followers" finished-at="2016-04-04T14:57:38Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[POJO.User@adede5]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[POJO.User@1928643]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addFollower -->
+        <test-method status="PASS" signature="addFollower(POJO.User, POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="addFollower" duration-ms="132" started-at="2016-04-04T14:57:38Z" data-provider="followers" finished-at="2016-04-04T14:57:39Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[POJO.User@17faa95]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[POJO.User@127982]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addFollower -->
+        <test-method status="PASS" signature="addFollower(POJO.User, POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="addFollower" duration-ms="32" started-at="2016-04-04T14:57:39Z" data-provider="followers" finished-at="2016-04-04T14:57:39Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[POJO.User@a86356]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[POJO.User@e81285]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addFollower -->
+        <test-method status="PASS" signature="addFollower(POJO.User, POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="addFollower" duration-ms="73" started-at="2016-04-04T14:57:39Z" data-provider="followers" finished-at="2016-04-04T14:57:39Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[POJO.User@9ba398]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[POJO.User@17b4f4c]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addFollower -->
+      </class> <!-- UnitTests.UserDaoTests -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
