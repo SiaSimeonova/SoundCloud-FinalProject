@@ -17,7 +17,8 @@ public class Playlist {
 		isPrivate=false;
 	}
 
-
+	
+	
 	public String getName() {
 		return name;
 	}
@@ -45,6 +46,18 @@ public class Playlist {
 
 	public void setPrivate(boolean isPrivate) {
 		this.isPrivate = isPrivate;
+	}
+
+
+
+	public int getID() {
+		return ID;
+	}
+
+
+
+	public void setID(int iD) {
+		ID = iD;
 	}
 	
 	

@@ -12,7 +12,7 @@ import db.DBConnection;
 
 public class UserDAO extends AbstractDAO implements IUserDAO {
 	private static final String INSERT_NEW_USER_SQL = "INSERT INTO users VALUES (null,?,?,?,?,?,?,?,?)";
-	private static final String SELECT_USER_SQL = "SELECT * FROM users WHERE username=?";
+	private static final String SELECT_USER_SQL = "SELECT * FROM users WHERE username like ? or Name like ?";
 	private static final String DELETE_USER_SQL = "DELETE FROM users WHERE username=?";
 	private static final String UPDATE_USER_SQL = "UPDATE users SET pasword = ?, name = ?, surname = ?, years = ?, gender = ?, picture = ? WHERE username = ?";
 	private static final String FIND_USER_BY_USERNAME_SQL = "SELECT * FROM users WHERE username = ?";
@@ -23,7 +23,9 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 	private static final String LIST_MY_AUDIOS_SQL = "select from audiofiles where Owner = ?";
 	private static final String LIST_MY_FOLLOWED_AUDIOS_SQL = "select * from audiofiles where owner in(select username_follower from followers where username_followed =?)";
 	private static final String LIST_MY_FOLLOWED_AUDIOS_SORTED_SQL = "select * from audiofiles where owner in(select username_follower from followers where username_followed =?) Order by TIME";
-
+	private static final String FIND_USERS_SQL = "SELECT * FROM users WHERE username = ? or Name = ?";
+	
+	
 	public int addUser(User user) throws UserDAOException {
 		if (user != null) {
 			PreparedStatement ps = null;
@@ -177,6 +179,9 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 			}
 		}
 	}
+	
+	
+	
 
 	@Override
 	public int followUser(User userToFollow, User follower) throws UserDAOException {
@@ -355,6 +360,42 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 			}
 		}
 		return audios;
+	}
+
+	@Override
+	public List<User> searchForUsers(String key) throws UserDAOException {
+		List<User> users = new ArrayList<User>();
+
+		PreparedStatement ps = null;
+		try {
+			ps = getCon().prepareStatement(FIND_USERS_SQL);
+			ps.setString(1, "%"+key+"%");
+			ps.setString(2, "%"+key+"%");
+			ResultSet result = ps.executeQuery();
+			while(result.next()){
+			String userName = result.getString(2);
+			String pass = result.getString(3);
+			String firstName = result.getString(4);
+			String surname = result.getString(5);
+			int age = result.getInt(6);
+			String gender = result.getString(7);
+			String mail = result.getString(8);
+			String picPath = result.getString(9);
+			users.add(new User(userName, pass, firstName, surname, age, gender, mail, picPath));
+			}
+			return users;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new UserDAOException("The user with username " + key + " cannot be found!", e);
+		}finally {
+			if (ps != null) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 
 }

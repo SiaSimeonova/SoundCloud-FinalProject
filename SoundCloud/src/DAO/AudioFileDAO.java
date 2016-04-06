@@ -5,10 +5,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import POJO.AudioFile;
 import POJO.Comment;
-import POJO.User;
+
 
 public class AudioFileDAO extends AbstractDAO implements IAudioFileDAO {
 	private static final String CHECK_IF_FILE_IS_LIKED = "select count(ID) from hateagram.likes where User_ID = ? and Post_ID = ? ;";
@@ -20,7 +19,9 @@ public class AudioFileDAO extends AbstractDAO implements IAudioFileDAO {
 	private static final String COMMENT_SQL = "insert into comments (user,idAudio,data) values (?,?,?)";
 	private static final String COUNT_MY_LIKES_SQL = "select count(ID) from likes where idAudio = ?";
 	private static final String LIST_MY_COMMENTS_SQL = "select * from COMMENTS where idAudio=?";
-
+	private static final String SEARCH_FOR_AUDIOS_SQL = "SELECT * FROM audioFiles WHERE name like ? or autor like ?";
+	
+	
 	@Override
 	public int addAudio(AudioFile audio) throws AudioDAOException {
 		if (audio != null) {
@@ -245,5 +246,31 @@ public class AudioFileDAO extends AbstractDAO implements IAudioFileDAO {
 			}
 		}
 		return comments;
+	}
+
+	@Override
+	public List<AudioFile> searchForAudios(String name) throws UserDAOException {
+		List<AudioFile> searchedAudios = new ArrayList<AudioFile>();
+		PreparedStatement ps = null;
+		try {
+			ps = getCon().prepareStatement(SEARCH_FOR_AUDIOS_SQL);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				searchedAudios.add(new AudioFile(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+						rs.getString(6), rs.getString(7), rs.getBoolean(8), rs.getInt(9), rs.getInt(10), rs.getInt(11),
+						rs.getInt(12), rs.getInt(13), rs.getString(14)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (ps != null) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return searchedAudios;	
 	}
 }
