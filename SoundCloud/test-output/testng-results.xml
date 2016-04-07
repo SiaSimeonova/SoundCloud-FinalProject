@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="11" total="11" passed="0">
+<testng-results skipped="0" failed="0" total="11" passed="11">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="706" started-at="2016-04-07T18:55:16Z" finished-at="2016-04-07T18:55:17Z">
+  <suite name="Default suite" duration-ms="753" started-at="2016-04-05T13:18:58Z" finished-at="2016-04-05T13:18:59Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="706" started-at="2016-04-07T18:55:16Z" finished-at="2016-04-07T18:55:17Z">
+    <test name="Default test" duration-ms="753" started-at="2016-04-05T13:18:58Z" finished-at="2016-04-05T13:18:59Z">
       <class name="UnitTests.UserDaoTests">
-        <test-method status="FAIL" signature="testAddUser(POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="testAddUser" duration-ms="495" started-at="2016-04-07T21:55:16Z" data-provider="user" finished-at="2016-04-07T21:55:17Z">
+        <test-method status="PASS" signature="TestCountFollowing(POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="TestCountFollowing" duration-ms="593" started-at="2016-04-05T16:18:58Z" data-provider="user" finished-at="2016-04-05T16:18:58Z">
           <params>
             <param index="0">
               <value>
@@ -15,636 +15,119 @@
               </value>
             </param>
           </params>
-          <exception class="DAO.UserDAOException">
-            <message>
-              <![CDATA[The operation has not been completed, please try again!]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[DAO.UserDAOException: The operation has not been completed, please try again!
-	at DAO.UserDAO.isThereSuchUser(UserDAO.java:74)
-	at DAO.UserDAO.addUser(UserDAO.java:31)
-	at UnitTests.UserDaoTests.testAddUser(UserDaoTests.java:37)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:497)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
-	at org.testng.TestRunner.privateRun(TestRunner.java:782)
-	at org.testng.TestRunner.run(TestRunner.java:632)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
-	at org.testng.TestNG.run(TestNG.java:1064)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
-Caused by: java.sql.SQLException: No value specified for parameter 2
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860)
-	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205)
-	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185)
-	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115)
-	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936)
-	at DAO.UserDAO.isThereSuchUser(UserDAO.java:71)
-	... 26 more
-]]>
-            </full-stacktrace>
-          </exception> <!-- DAO.UserDAOException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testAddUser -->
-        <test-method status="FAIL" signature="testAddUser(POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="testAddUser" duration-ms="3" started-at="2016-04-07T21:55:17Z" data-provider="user" finished-at="2016-04-07T21:55:17Z">
+        </test-method> <!-- TestCountFollowing -->
+        <test-method status="PASS" signature="TestCountFollowing(POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="TestCountFollowing" duration-ms="3" started-at="2016-04-05T16:18:58Z" data-provider="user" finished-at="2016-04-05T16:18:58Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[POJO.User@480dd7]]>
+                <![CDATA[POJO.User@49fd9b]]>
               </value>
             </param>
           </params>
-          <exception class="DAO.UserDAOException">
-            <message>
-              <![CDATA[The operation has not been completed, please try again!]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[DAO.UserDAOException: The operation has not been completed, please try again!
-	at DAO.UserDAO.isThereSuchUser(UserDAO.java:74)
-	at DAO.UserDAO.addUser(UserDAO.java:31)
-	at UnitTests.UserDaoTests.testAddUser(UserDaoTests.java:37)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:497)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
-	at org.testng.TestRunner.privateRun(TestRunner.java:782)
-	at org.testng.TestRunner.run(TestRunner.java:632)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
-	at org.testng.TestNG.run(TestNG.java:1064)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
-Caused by: java.sql.SQLException: No value specified for parameter 2
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860)
-	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205)
-	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185)
-	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115)
-	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936)
-	at DAO.UserDAO.isThereSuchUser(UserDAO.java:71)
-	... 26 more
-]]>
-            </full-stacktrace>
-          </exception> <!-- DAO.UserDAOException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testAddUser -->
-        <test-method status="FAIL" signature="testAddUser(POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="testAddUser" duration-ms="2" started-at="2016-04-07T21:55:17Z" data-provider="user" finished-at="2016-04-07T21:55:17Z">
+        </test-method> <!-- TestCountFollowing -->
+        <test-method status="PASS" signature="TestCountFollowing(POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="TestCountFollowing" duration-ms="6" started-at="2016-04-05T16:18:58Z" data-provider="user" finished-at="2016-04-05T16:18:58Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[POJO.User@286778]]>
+                <![CDATA[POJO.User@1c24521]]>
               </value>
             </param>
           </params>
-          <exception class="DAO.UserDAOException">
-            <message>
-              <![CDATA[The operation has not been completed, please try again!]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[DAO.UserDAOException: The operation has not been completed, please try again!
-	at DAO.UserDAO.isThereSuchUser(UserDAO.java:74)
-	at DAO.UserDAO.addUser(UserDAO.java:31)
-	at UnitTests.UserDaoTests.testAddUser(UserDaoTests.java:37)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:497)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
-	at org.testng.TestRunner.privateRun(TestRunner.java:782)
-	at org.testng.TestRunner.run(TestRunner.java:632)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
-	at org.testng.TestNG.run(TestNG.java:1064)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
-Caused by: java.sql.SQLException: No value specified for parameter 2
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860)
-	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205)
-	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185)
-	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115)
-	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936)
-	at DAO.UserDAO.isThereSuchUser(UserDAO.java:71)
-	... 26 more
-]]>
-            </full-stacktrace>
-          </exception> <!-- DAO.UserDAOException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testAddUser -->
-        <test-method status="FAIL" signature="testAddUser(POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="testAddUser" duration-ms="2" started-at="2016-04-07T21:55:17Z" data-provider="user" finished-at="2016-04-07T21:55:17Z">
+        </test-method> <!-- TestCountFollowing -->
+        <test-method status="PASS" signature="TestCountFollowing(POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="TestCountFollowing" duration-ms="3" started-at="2016-04-05T16:18:58Z" data-provider="user" finished-at="2016-04-05T16:18:58Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[POJO.User@3708b3]]>
+                <![CDATA[POJO.User@1610302]]>
               </value>
             </param>
           </params>
-          <exception class="DAO.UserDAOException">
-            <message>
-              <![CDATA[The operation has not been completed, please try again!]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[DAO.UserDAOException: The operation has not been completed, please try again!
-	at DAO.UserDAO.isThereSuchUser(UserDAO.java:74)
-	at DAO.UserDAO.addUser(UserDAO.java:31)
-	at UnitTests.UserDaoTests.testAddUser(UserDaoTests.java:37)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:497)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
-	at org.testng.TestRunner.privateRun(TestRunner.java:782)
-	at org.testng.TestRunner.run(TestRunner.java:632)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
-	at org.testng.TestNG.run(TestNG.java:1064)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
-Caused by: java.sql.SQLException: No value specified for parameter 2
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860)
-	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205)
-	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185)
-	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115)
-	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936)
-	at DAO.UserDAO.isThereSuchUser(UserDAO.java:71)
-	... 26 more
-]]>
-            </full-stacktrace>
-          </exception> <!-- DAO.UserDAOException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testAddUser -->
-        <test-method status="FAIL" signature="testAddUser(POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="testAddUser" duration-ms="2" started-at="2016-04-07T21:55:17Z" data-provider="user" finished-at="2016-04-07T21:55:17Z">
+        </test-method> <!-- TestCountFollowing -->
+        <test-method status="PASS" signature="TestCountFollowing(POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="TestCountFollowing" duration-ms="4" started-at="2016-04-05T16:18:58Z" data-provider="user" finished-at="2016-04-05T16:18:58Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[POJO.User@9f73a2]]>
+                <![CDATA[POJO.User@1e3c938]]>
               </value>
             </param>
           </params>
-          <exception class="DAO.UserDAOException">
-            <message>
-              <![CDATA[The operation has not been completed, please try again!]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[DAO.UserDAOException: The operation has not been completed, please try again!
-	at DAO.UserDAO.isThereSuchUser(UserDAO.java:74)
-	at DAO.UserDAO.addUser(UserDAO.java:31)
-	at UnitTests.UserDaoTests.testAddUser(UserDaoTests.java:37)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:497)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
-	at org.testng.TestRunner.privateRun(TestRunner.java:782)
-	at org.testng.TestRunner.run(TestRunner.java:632)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
-	at org.testng.TestNG.run(TestNG.java:1064)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
-Caused by: java.sql.SQLException: No value specified for parameter 2
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860)
-	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205)
-	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185)
-	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115)
-	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936)
-	at DAO.UserDAO.isThereSuchUser(UserDAO.java:71)
-	... 26 more
-]]>
-            </full-stacktrace>
-          </exception> <!-- DAO.UserDAOException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testAddUser -->
-        <test-method status="FAIL" signature="testAddUser(POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="testAddUser" duration-ms="3" started-at="2016-04-07T21:55:17Z" data-provider="user" finished-at="2016-04-07T21:55:17Z">
+        </test-method> <!-- TestCountFollowing -->
+        <test-method status="PASS" signature="TestCountFollowing(POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="TestCountFollowing" duration-ms="3" started-at="2016-04-05T16:18:58Z" data-provider="user" finished-at="2016-04-05T16:18:58Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[POJO.User@1ac631b]]>
+                <![CDATA[POJO.User@17b4f4c]]>
               </value>
             </param>
           </params>
-          <exception class="DAO.UserDAOException">
-            <message>
-              <![CDATA[The operation has not been completed, please try again!]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[DAO.UserDAOException: The operation has not been completed, please try again!
-	at DAO.UserDAO.isThereSuchUser(UserDAO.java:74)
-	at DAO.UserDAO.addUser(UserDAO.java:31)
-	at UnitTests.UserDaoTests.testAddUser(UserDaoTests.java:37)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:497)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
-	at org.testng.TestRunner.privateRun(TestRunner.java:782)
-	at org.testng.TestRunner.run(TestRunner.java:632)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
-	at org.testng.TestNG.run(TestNG.java:1064)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
-Caused by: java.sql.SQLException: No value specified for parameter 2
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860)
-	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205)
-	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185)
-	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115)
-	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936)
-	at DAO.UserDAO.isThereSuchUser(UserDAO.java:71)
-	... 26 more
-]]>
-            </full-stacktrace>
-          </exception> <!-- DAO.UserDAOException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testAddUser -->
-        <test-method status="FAIL" signature="testAddUser(POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="testAddUser" duration-ms="2" started-at="2016-04-07T21:55:17Z" data-provider="user" finished-at="2016-04-07T21:55:17Z">
+        </test-method> <!-- TestCountFollowing -->
+        <test-method status="PASS" signature="TestCountFollowing(POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="TestCountFollowing" duration-ms="2" started-at="2016-04-05T16:18:58Z" data-provider="user" finished-at="2016-04-05T16:18:58Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[POJO.User@158fe70]]>
+                <![CDATA[POJO.User@9b1010]]>
               </value>
             </param>
           </params>
-          <exception class="DAO.UserDAOException">
-            <message>
-              <![CDATA[The operation has not been completed, please try again!]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[DAO.UserDAOException: The operation has not been completed, please try again!
-	at DAO.UserDAO.isThereSuchUser(UserDAO.java:74)
-	at DAO.UserDAO.addUser(UserDAO.java:31)
-	at UnitTests.UserDaoTests.testAddUser(UserDaoTests.java:37)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:497)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
-	at org.testng.TestRunner.privateRun(TestRunner.java:782)
-	at org.testng.TestRunner.run(TestRunner.java:632)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
-	at org.testng.TestNG.run(TestNG.java:1064)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
-Caused by: java.sql.SQLException: No value specified for parameter 2
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860)
-	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205)
-	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185)
-	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115)
-	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936)
-	at DAO.UserDAO.isThereSuchUser(UserDAO.java:71)
-	... 26 more
-]]>
-            </full-stacktrace>
-          </exception> <!-- DAO.UserDAOException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testAddUser -->
-        <test-method status="FAIL" signature="testAddUser(POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="testAddUser" duration-ms="2" started-at="2016-04-07T21:55:17Z" data-provider="user" finished-at="2016-04-07T21:55:17Z">
+        </test-method> <!-- TestCountFollowing -->
+        <test-method status="PASS" signature="TestCountFollowing(POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="TestCountFollowing" duration-ms="2" started-at="2016-04-05T16:18:58Z" data-provider="user" finished-at="2016-04-05T16:18:58Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[POJO.User@883ce7]]>
+                <![CDATA[POJO.User@10143d3]]>
               </value>
             </param>
           </params>
-          <exception class="DAO.UserDAOException">
-            <message>
-              <![CDATA[The operation has not been completed, please try again!]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[DAO.UserDAOException: The operation has not been completed, please try again!
-	at DAO.UserDAO.isThereSuchUser(UserDAO.java:74)
-	at DAO.UserDAO.addUser(UserDAO.java:31)
-	at UnitTests.UserDaoTests.testAddUser(UserDaoTests.java:37)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:497)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
-	at org.testng.TestRunner.privateRun(TestRunner.java:782)
-	at org.testng.TestRunner.run(TestRunner.java:632)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
-	at org.testng.TestNG.run(TestNG.java:1064)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
-Caused by: java.sql.SQLException: No value specified for parameter 2
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860)
-	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205)
-	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185)
-	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115)
-	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936)
-	at DAO.UserDAO.isThereSuchUser(UserDAO.java:71)
-	... 26 more
-]]>
-            </full-stacktrace>
-          </exception> <!-- DAO.UserDAOException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testAddUser -->
-        <test-method status="FAIL" signature="testAddUser(POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="testAddUser" duration-ms="2" started-at="2016-04-07T21:55:17Z" data-provider="user" finished-at="2016-04-07T21:55:17Z">
+        </test-method> <!-- TestCountFollowing -->
+        <test-method status="PASS" signature="TestCountFollowing(POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="TestCountFollowing" duration-ms="1" started-at="2016-04-05T16:18:58Z" data-provider="user" finished-at="2016-04-05T16:18:58Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[POJO.User@b8a058]]>
+                <![CDATA[POJO.User@1b92f0a]]>
               </value>
             </param>
           </params>
-          <exception class="DAO.UserDAOException">
-            <message>
-              <![CDATA[The operation has not been completed, please try again!]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[DAO.UserDAOException: The operation has not been completed, please try again!
-	at DAO.UserDAO.isThereSuchUser(UserDAO.java:74)
-	at DAO.UserDAO.addUser(UserDAO.java:31)
-	at UnitTests.UserDaoTests.testAddUser(UserDaoTests.java:37)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:497)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
-	at org.testng.TestRunner.privateRun(TestRunner.java:782)
-	at org.testng.TestRunner.run(TestRunner.java:632)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
-	at org.testng.TestNG.run(TestNG.java:1064)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
-Caused by: java.sql.SQLException: No value specified for parameter 2
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860)
-	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205)
-	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185)
-	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115)
-	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936)
-	at DAO.UserDAO.isThereSuchUser(UserDAO.java:71)
-	... 26 more
-]]>
-            </full-stacktrace>
-          </exception> <!-- DAO.UserDAOException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testAddUser -->
-        <test-method status="FAIL" signature="testAddUser(POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="testAddUser" duration-ms="3" started-at="2016-04-07T21:55:17Z" data-provider="user" finished-at="2016-04-07T21:55:17Z">
+        </test-method> <!-- TestCountFollowing -->
+        <test-method status="PASS" signature="TestCountFollowing(POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="TestCountFollowing" duration-ms="2" started-at="2016-04-05T16:18:58Z" data-provider="user" finished-at="2016-04-05T16:18:58Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[POJO.User@707e36]]>
+                <![CDATA[POJO.User@1ef968d]]>
               </value>
             </param>
           </params>
-          <exception class="DAO.UserDAOException">
-            <message>
-              <![CDATA[The operation has not been completed, please try again!]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[DAO.UserDAOException: The operation has not been completed, please try again!
-	at DAO.UserDAO.isThereSuchUser(UserDAO.java:74)
-	at DAO.UserDAO.addUser(UserDAO.java:31)
-	at UnitTests.UserDaoTests.testAddUser(UserDaoTests.java:37)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:497)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
-	at org.testng.TestRunner.privateRun(TestRunner.java:782)
-	at org.testng.TestRunner.run(TestRunner.java:632)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
-	at org.testng.TestNG.run(TestNG.java:1064)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
-Caused by: java.sql.SQLException: No value specified for parameter 2
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860)
-	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205)
-	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185)
-	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115)
-	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936)
-	at DAO.UserDAO.isThereSuchUser(UserDAO.java:71)
-	... 26 more
-]]>
-            </full-stacktrace>
-          </exception> <!-- DAO.UserDAOException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testAddUser -->
-        <test-method status="FAIL" signature="testAddUser(POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="testAddUser" duration-ms="2" started-at="2016-04-07T21:55:17Z" data-provider="user" finished-at="2016-04-07T21:55:17Z">
+        </test-method> <!-- TestCountFollowing -->
+        <test-method status="PASS" signature="TestCountFollowing(POJO.User)[pri:0, instance:UnitTests.UserDaoTests@1d99928]" name="TestCountFollowing" duration-ms="27" started-at="2016-04-05T16:18:58Z" data-provider="user" finished-at="2016-04-05T16:18:59Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[POJO.User@16eabae]]>
+                <![CDATA[POJO.User@136e637]]>
               </value>
             </param>
           </params>
-          <exception class="DAO.UserDAOException">
-            <message>
-              <![CDATA[The operation has not been completed, please try again!]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[DAO.UserDAOException: The operation has not been completed, please try again!
-	at DAO.UserDAO.isThereSuchUser(UserDAO.java:74)
-	at DAO.UserDAO.addUser(UserDAO.java:31)
-	at UnitTests.UserDaoTests.testAddUser(UserDaoTests.java:37)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:497)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
-	at org.testng.TestRunner.privateRun(TestRunner.java:782)
-	at org.testng.TestRunner.run(TestRunner.java:632)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
-	at org.testng.TestNG.run(TestNG.java:1064)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
-Caused by: java.sql.SQLException: No value specified for parameter 2
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860)
-	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205)
-	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185)
-	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115)
-	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936)
-	at DAO.UserDAO.isThereSuchUser(UserDAO.java:71)
-	... 26 more
-]]>
-            </full-stacktrace>
-          </exception> <!-- DAO.UserDAOException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testAddUser -->
+        </test-method> <!-- TestCountFollowing -->
       </class> <!-- UnitTests.UserDaoTests -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

@@ -14,13 +14,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class PlayAudio
  */
 @WebServlet("/PlayAudio")
-public class playAudio extends HttpServlet {
+public class PlayAudio extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public playAudio() {
+    public PlayAudio() {
         super();
         // TODO Auto-generated constructor stub
     }
