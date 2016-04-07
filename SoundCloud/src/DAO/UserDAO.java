@@ -24,8 +24,7 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 	private static final String LIST_MY_FOLLOWED_AUDIOS_SQL = "select * from audiofiles where owner in(select username_follower from followers where username_followed =?)";
 	private static final String LIST_MY_FOLLOWED_AUDIOS_SORTED_SQL = "select * from audiofiles where owner in(select username_follower from followers where username_followed =?) Order by TIME";
 	private static final String FIND_USERS_SQL = "SELECT * FROM users WHERE username = ? or Name = ?";
-	
-	
+
 	public int addUser(User user) throws UserDAOException {
 		if (user != null) {
 			PreparedStatement ps = null;
@@ -62,6 +61,7 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 		}
 		throw new UserDAOException("The user cannot be added right now. Please try again.");
 	}
+
 
 	public boolean isThereSuchUser(String user, String password) throws UserDAOException {
 		PreparedStatement ps = null;
@@ -129,14 +129,14 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 
 	@Override
 	public void deteteUser(User user) throws UserDAOException {
-		PreparedStatement ps=null;
+		PreparedStatement ps = null;
 		try {
 			ps = getCon().prepareStatement(DELETE_USER_SQL);
 			ps.setString(1, user.getUserName());
 			ps.executeUpdate();
 		} catch (Exception e) {
 			throw new UserDAOException("The user cannot be deleted right now, please try again.", e);
-		}finally {
+		} finally {
 			if (ps != null) {
 				try {
 					ps.close();
@@ -169,7 +169,7 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new UserDAOException("The user with username " + username + " cannot be found!", e);
-		}finally {
+		} finally {
 			if (ps != null) {
 				try {
 					ps.close();
@@ -179,9 +179,6 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 			}
 		}
 	}
-	
-	
-	
 
 	@Override
 	public int followUser(User userToFollow, User follower) throws UserDAOException {
@@ -197,7 +194,7 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new UserDAOException("The user to follow can not be added at the moment, please try again later!", e);
-		}finally {
+		} finally {
 			if (ps != null) {
 				try {
 					ps.close();
@@ -221,7 +218,7 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new UserDAOException("Your followers cannot be listed at the moment, please try again later!", e);
-		}finally {
+		} finally {
 			if (ps != null) {
 				try {
 					ps.close();
@@ -246,7 +243,7 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new UserDAOException("Your followers cannot be listed at the moment, please try again later!", e);
-		}finally {
+		} finally {
 			if (ps != null) {
 				try {
 					ps.close();
@@ -271,7 +268,7 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new UserDAOException("Your audios cannot be listed at the moment, please try again later!", e);
-		}finally {
+		} finally {
 			if (ps != null) {
 				try {
 					ps.close();
@@ -298,7 +295,7 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			if (ps != null) {
 				try {
 					ps.close();
@@ -319,12 +316,12 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				audios.add(new AudioFile(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-								rs.getString(6), rs.getString(7), rs.getBoolean(8), rs.getInt(9), rs.getInt(10),
-								rs.getInt(11), rs.getInt(12), rs.getInt(13), rs.getString(14)));
+						rs.getString(6), rs.getString(7), rs.getBoolean(8), rs.getInt(9), rs.getInt(10), rs.getInt(11),
+						rs.getInt(12), rs.getInt(13), rs.getString(14)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			if (ps != null) {
 				try {
 					ps.close();
@@ -345,12 +342,12 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				audios.add(new AudioFile(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-								rs.getString(6), rs.getString(7), rs.getBoolean(8), rs.getInt(9), rs.getInt(10),
-								rs.getInt(11), rs.getInt(12), rs.getInt(13), rs.getString(14)));
+						rs.getString(6), rs.getString(7), rs.getBoolean(8), rs.getInt(9), rs.getInt(10), rs.getInt(11),
+						rs.getInt(12), rs.getInt(13), rs.getString(14)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			if (ps != null) {
 				try {
 					ps.close();
@@ -369,25 +366,25 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 		PreparedStatement ps = null;
 		try {
 			ps = getCon().prepareStatement(FIND_USERS_SQL);
-			ps.setString(1, "%"+key+"%");
-			ps.setString(2, "%"+key+"%");
+			ps.setString(1, "%" + key + "%");
+			ps.setString(2, "%" + key + "%");
 			ResultSet result = ps.executeQuery();
-			while(result.next()){
-			String userName = result.getString(2);
-			String pass = result.getString(3);
-			String firstName = result.getString(4);
-			String surname = result.getString(5);
-			int age = result.getInt(6);
-			String gender = result.getString(7);
-			String mail = result.getString(8);
-			String picPath = result.getString(9);
-			users.add(new User(userName, pass, firstName, surname, age, gender, mail, picPath));
+			while (result.next()) {
+				String userName = result.getString(2);
+				String pass = result.getString(3);
+				String firstName = result.getString(4);
+				String surname = result.getString(5);
+				int age = result.getInt(6);
+				String gender = result.getString(7);
+				String mail = result.getString(8);
+				String picPath = result.getString(9);
+				users.add(new User(userName, pass, firstName, surname, age, gender, mail, picPath));
 			}
 			return users;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new UserDAOException("The user with username " + key + " cannot be found!", e);
-		}finally {
+		} finally {
 			if (ps != null) {
 				try {
 					ps.close();
