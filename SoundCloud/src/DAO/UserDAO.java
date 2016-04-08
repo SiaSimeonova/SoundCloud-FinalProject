@@ -12,7 +12,7 @@ import db.DBConnection;
 
 public class UserDAO extends AbstractDAO implements IUserDAO {
 	private static final String INSERT_NEW_USER_SQL = "INSERT INTO users VALUES (null,?,?,?,?,?,?,?,?)";
-	private static final String SELECT_USER_SQL = "SELECT * FROM users WHERE username like ? or Name like ?";
+	private static final String SELECT_USER_SQL = "SELECT * FROM users WHERE username = ? and pasword = ?";
 	private static final String DELETE_USER_SQL = "DELETE FROM users WHERE username=?";
 	private static final String UPDATE_USER_SQL = "UPDATE users SET pasword = ?, name = ?, surname = ?, years = ?, gender = ?, picture = ? WHERE username = ?";
 	private static final String FIND_USER_BY_USERNAME_SQL = "SELECT * FROM users WHERE username = ?";
@@ -29,7 +29,7 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 	public int addUser(User user) throws UserDAOException {
 		if (user != null) {
 			PreparedStatement ps = null;
-			if (!isThereSuchUser(user.getUserName(), user.getPass())) {
+			if (!isThereSuchUser(user.getUserName().toString(), user.getPass().toString())) {
 				try {
 					ps = getCon().prepareStatement(INSERT_NEW_USER_SQL, PreparedStatement.RETURN_GENERATED_KEYS);
 					ps.setString(1, user.getUserName());
@@ -68,6 +68,7 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 		try {
 			ps = DBConnection.getInstance().getCon().prepareStatement(SELECT_USER_SQL);
 			ps.setString(1, user);
+			ps.setString(2, password);
 			ResultSet result = ps.executeQuery();
 			return result.next();
 		} catch (SQLException e) {

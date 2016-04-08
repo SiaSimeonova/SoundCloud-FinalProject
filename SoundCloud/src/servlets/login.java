@@ -47,7 +47,7 @@ public class login extends HttpServlet {
 			response.sendRedirect("./header.jsp");
 		}
 		else{
-			response.getWriter().println("Nema takuv");
+			response.sendRedirect("./signIn.jsp");
 		}
 	}
 

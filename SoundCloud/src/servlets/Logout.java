@@ -20,7 +20,7 @@ public class Logout extends HttpServlet {
 			request.getSession(false).removeAttribute("username");
 			request.getSession().invalidate();
 		}
-		response.sendRedirect("./Index");
+		response.sendRedirect("index.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

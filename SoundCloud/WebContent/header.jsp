@@ -1,6 +1,6 @@
 <%@page import="POJO.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1" errorPage="error.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -16,11 +16,10 @@
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <style>
-#search_form{
-
-position: relative;
- top: -40px;
- left: 70%;
+#search_form {
+	position: relative;
+	top: -40px;
+	left: 70%;
 }
 
 #keyword {
@@ -39,7 +38,7 @@ position: relative;
 <body>
 	<%
 		if (session.getAttribute("user") == null) {
-			out.print("Ne hitruvai be mishkoo..");
+			out.print("Please sign in or register: http://localhost:8080/SoundCloud");
 			return;
 		}
 	%>
@@ -66,19 +65,18 @@ position: relative;
 
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-			<li><a href="#">
-					Upload </a></li>
+			<li><a href="#"> Upload </a></li>
 			<li><a href="#"><span class="glyphicon glyphicon-user"></span>
-					Hello <%=((User)session.getAttribute("user")).getUserName()%></a></li>
+					Hello <%=((User) session.getAttribute("user")).getUserName()%></a></li>
 			<li class="dropdown"><a class="dropdown-toggle"
 				data-toggle="dropdown" href="#">Options <span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li><a href="./profile.jsp">Profile</a></li>
-					
+
 				</ul></li>
 
 
-			<li><a href="./index.jsp"><span 
+			<li><a href="Logout"><span
 					class="glyphicon glyphicon-log-in"></span> Logout </a></li>
 		</ul>
 

@@ -30,7 +30,7 @@ public class UserDaoTests {
 				{ new User("user5", "pass8", "mail6@abv.bg") , new User("user7", "pass7", "mail5@abv.bg") }};
 	}
 
-	@Test(dataProvider = "user", enabled = false)
+	@Test(dataProvider = "user")
 	public static void testAddUser(User user) throws UserDAOException {
 		int id = 0;
 		try {
@@ -89,7 +89,7 @@ public class UserDaoTests {
 		}
 	}
 	
-	@Test (dataProvider = "user")
+	@Test (dataProvider = "user", enabled = false)
 	public static void TestCountFollowing(User follower) throws UserDAOException {
 		try {
 			int followers = DAO.UserDAO.class.newInstance().getFollowing(follower);
