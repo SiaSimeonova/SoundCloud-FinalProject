@@ -47,7 +47,7 @@ public class login extends HttpServlet {
 			}
 			
 			session.setAttribute("user", userToBeAdded);
-			response.sendRedirect("./profile.jsp");
+			response.sendRedirect("./header.jsp");
 		}
 		else{
 			response.getWriter().println("Nema takuv");

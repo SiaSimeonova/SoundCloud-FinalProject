@@ -1,16 +1,20 @@
 package POJO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Playlist {
-
+	private static int commentCounter=0;
+	private int ID;
 	private String name;
 	private List <AudioFile> myFiles;
+	private boolean isPrivate;
 	
-	public Playlist(String name, List<AudioFile> myFiles) {
-		super();
+	public Playlist(String name) {
+		ID = ++commentCounter;
 		this.name = name;
-		this.myFiles = myFiles;
+		this.myFiles = new ArrayList <AudioFile>();
+		isPrivate=false;
 	}
 
 
@@ -32,7 +36,16 @@ public class Playlist {
 	public void setMyFiles(List<AudioFile> myFiles) {
 		this.myFiles = myFiles;
 	}
+
+
+	public boolean isPrivate() {
+		return isPrivate;
+	}
+
+
+	public void setPrivate(boolean isPrivate) {
+		this.isPrivate = isPrivate;
+	}
 	
 	
 }
-
