@@ -87,11 +87,9 @@ public class User {
 	}
 
 	public void setGender(String gender) {
-		if (gender.equalsIgnoreCase("male") || gender.equalsIgnoreCase("female")) {
+		
 			this.gender = gender;
-		} else {
-			this.gender = "undefined";
-		}
+		
 	}
 
 	public String getMail() {

@@ -1,6 +1,13 @@
 <%@page import="POJO.User"%>
+<%@page import="java.io.OutputStream"%>
+<%@page import="java.io.FileInputStream"%>
+<%@page import="java.io.File"%>
+<%@page import="POJO.User"%>
+<%@page import="java.util.List"%>
+<%@page import="DAO.AudioFileDAO"%>
+<%@page import="POJO.AudioFile"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" errorPage="error.jsp"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -36,12 +43,8 @@
 </style>
 </head>
 <body>
-	<%
-		if (session.getAttribute("user") == null) {
-			out.print("Please sign in or register: http://localhost:8080/SoundCloud");
-			return;
-		}
-	%>
+
+
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -49,14 +52,22 @@
 			<img src="images/logo.jpg" class="img-rounded" alt="Cinque Terre"
 				width="50" height="50"> <a class="navbar-brand" href="#">SoundBlast</a>
 		</div>
+
+		<%
+			if (session.getAttribute("user") == null) {
+				response.sendRedirect("index.jsp");
+				return;
+			}
+		%>
+
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="#">Home</a></li>
-			<li><a href="#">Collection</a></li>
+			<li><a href="./Collection.jsp">Collection</a></li>
 
-			<form id="search_form" action="subscribe" method="post">
+			<form id="search_form" action="./Search" method="post">
 
 				<input class="text" placeholder="Search for your favorite tracks "
-					id="keyword" type="text" name="searchWord" /> <input
+					id="keyword" type="text" name="searchKey" /> <input
 					class="btn btn-danger" id="subscribe_submit" type="submit"
 					value="Search" />
 			</form>
@@ -65,7 +76,7 @@
 
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-			<li><a href="#"> Upload </a></li>
+			<li><a href="upload.jsp"> Upload </a></li>
 			<li><a href="#"><span class="glyphicon glyphicon-user"></span>
 					Hello <%=((User) session.getAttribute("user")).getUserName()%></a></li>
 			<li class="dropdown"><a class="dropdown-toggle"
@@ -83,5 +94,18 @@
 	</div>
 
 	</nav>
+	<%
+		List<AudioFile> uploads = new AudioFileDAO()
+				.getUploads(((User) session.getAttribute("user")).getUserName());
+		for (AudioFile song : uploads) {
+			request.setAttribute("name", song.getName());
+			request.setAttribute("author", song.getAutor());
+			request.setAttribute("ganre", song.getCategory());
+	%>
+	<%@include file="./template.jsp"%>
+	<%
+		}
+	%>
+
 </body>
 </html>

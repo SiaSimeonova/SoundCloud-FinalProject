@@ -5,6 +5,8 @@ public class AudioFile {
 	private static int audioCounter = 0;
 	private int id;
 	private String URL;
+	
+
 	private String category;
 	private String name;
 	private String autor;
@@ -16,11 +18,11 @@ public class AudioFile {
 	private int shares;
 	private int downloads;
 	private int timesPlayed;
-	private String ownersName;
+	private int ownersID;
 
 	public AudioFile(String uRL, String category, String name, String autor, String description, String picture,
-			boolean isPrivate, int likes, int reposts, int shares, int downloads, int timesPlayed, String ownersName) {
-		this(uRL, name, ownersName);
+			boolean isPrivate, int likes, int reposts, int shares, int downloads, int timesPlayed, int ownersID) {
+		this(uRL, name, ownersID);
 		this.category = category;
 		this.autor = autor;
 		this.description = description;
@@ -33,8 +35,8 @@ public class AudioFile {
 		this.timesPlayed = timesPlayed;
 	}
 
-	public AudioFile(String uRL, String name, String ownersName) {
-		URL = uRL;
+	public AudioFile(String uRL, String name, int ownersID) {
+		this.URL = uRL;
 		this.name = name;
 		this.autor = "empty";
 		this.description = "empty";
@@ -45,7 +47,7 @@ public class AudioFile {
 		this.shares = 0;
 		this.downloads = 0;
 		this.timesPlayed = 0;
-		this.ownersName = ownersName;
+		this.ownersID = ownersID;
 		this.id = ++audioCounter;
 	}
 
@@ -149,12 +151,15 @@ public class AudioFile {
 		this.timesPlayed = timesPlayed;
 	}
 
-	public String getOwnersName() {
-		return ownersName;
+	public int getOwnersName() {
+		return ownersID;
 	}
 
-	public void setOwnersName(String ownersName) {
-		this.ownersName = ownersName;
+	public void setOwnersName(int ownersID) {
+		this.ownersID = ownersID;
 	}
-
+	@Override
+	public String toString() {
+		return "AudioFile [URL=" + URL + ", category=" + category + ", name=" + name + ", autor=" + autor + "]";
+	}
 }

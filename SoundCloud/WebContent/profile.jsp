@@ -1,6 +1,6 @@
 <%@page import="POJO.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" errorPage="error.jsp"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -33,7 +33,7 @@ color: white;
 }
 #profile{
 position: relative;
-top:50px;
+top:80px;
 }
 </style>
 </head>
@@ -47,12 +47,18 @@ top:50px;
 		<div class="col-md-12">
 			<div class="row">
 				<div class="col-md-2">
-					<img alt="Bootstrap Image Preview" src="images/profilna.png" class="img-circle" width="240px" height="240px">
+				<%String picPath=((User)(session.getAttribute("user"))).getPicPath();
+				
+				if(picPath==null){
+					picPath="defProfile.jpg";
+				}
+				%>
+					<img  src="./profilePicServlet" class="img-circle" width="240px" height="240px">
 				</div>
 				<div class="col-md-6">
 				<div id="name">
 				<% String firstName=((User)session.getAttribute("user")).getFirstName();
-							if(firstName==null){
+							if(firstName.equals("empty")){
 									firstName="";
 							}
 						
@@ -61,7 +67,7 @@ top:50px;
 						<%=firstName %>
 					</h3>
 					<% String lastName=((User)session.getAttribute("user")).getSurname();
-							if(lastName==null){
+							if(lastName.equals("empty")){
 									lastName="";
 							}
 						
@@ -72,10 +78,8 @@ top:50px;
 					</div>
 				</div>
 				<div class="col-md-4">
-					 
-					<button  id="editButton"type="button" class="btn btn-danger">
-						Edit Profile
-					</button>
+					 <a href="editprofile.jsp" id="editButton" class="btn btn-danger role="button">Edit Profile</a>
+					
 				</div>
 			</div>
 			<div class="row">
@@ -95,54 +99,8 @@ top:50px;
 				</div>
 				<div class="col-md-4">
 					<div class="row">
-						<div class="col-md-4">
-							<div class="thumbnail">
-								<img alt="Bootstrap Thumbnail First" src="http://lorempixel.com/output/people-q-c-600-200-1.jpg">
-								<div class="caption">
-									<h3>
-										Thumbnail label
-									</h3>
-									<p>
-										Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-									</p>
-									<p>
-										<a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="thumbnail">
-								<img alt="Bootstrap Thumbnail Second" src="http://lorempixel.com/output/city-q-c-600-200-1.jpg">
-								<div class="caption">
-									<h3>
-										Thumbnail label
-									</h3>
-									<p>
-										Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-									</p>
-									<p>
-										<a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="thumbnail">
-								<img alt="Bootstrap Thumbnail Third" src="http://lorempixel.com/output/sports-q-c-600-200-1.jpg">
-								<div class="caption">
-									<h3>
-										Thumbnail label
-									</h3>
-									<p>
-										Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-									</p>
-									<p>
-										<a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
-									</p>
-								</div>
-							</div>
-						</div>
+						
+					
 					</div>
 				</div>
 			</div>
