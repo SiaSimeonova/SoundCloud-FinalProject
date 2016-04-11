@@ -2,6 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
+<%@ page errorPage="error.jsp" %>
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -38,6 +40,12 @@ top:80px;
 </style>
 </head>
   <body>
+  <%
+			if (session.getAttribute("user") == null) {
+				response.sendRedirect("index.jsp");
+				return;
+			}
+		%>
 	<div>
 		<img  id="background" src="images/background.png" >
 	</div>
@@ -48,9 +56,12 @@ top:80px;
 			<div class="row">
 				<div class="col-md-2">
 				<%String picPath=((User)(session.getAttribute("user"))).getPicPath();
-				
+			
 				if(picPath==null){
 					picPath="defProfile.jpg";
+				}
+				else{
+					picPath="./profilePicServlet";
 				}
 				%>
 					<img  src="./profilePicServlet" class="img-circle" width="240px" height="240px">

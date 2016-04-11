@@ -37,12 +37,20 @@ public class Demo {
 		//System.out.println(dao.getPathToSongById(dao.getRandomIdFromDb()));
 		//System.out.println(dao.getPicPathById(dao.getRandomIdFromDb()));
 		//System.out.println(new UserDAO().getUser("slavozar").getPicPath());
+//		
+//		
+		List<AudioFile> list=new AudioFileDAO().getUploads("slavozar");
 		
-		List<AudioFile> list=dao.getUploads("pesho");
-		
-		for(AudioFile song:list){
-			System.out.println(song);
+		for(AudioFile song: list){
+			System.out.println(song.getId());
 		}
+		List<AudioFile> list1=new AudioFileDAO().getUploads("slavozar");
+		System.out.println("Vtori pat");
+		for(AudioFile song: list1){
+			System.out.println(song.getId());
+		}
+		
+		
 	}
 
 }

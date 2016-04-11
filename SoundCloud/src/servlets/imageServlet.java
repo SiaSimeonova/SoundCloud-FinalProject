@@ -25,13 +25,15 @@ public class imageServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		StringBuffer url=request.getRequestURL();
 		String URL=url.toString();
+		System.out.println(URL);
+
 		URL=URL.substring(URL.lastIndexOf("/")+1);
-		
 		ServletOutputStream stream = null;
 		BufferedInputStream buf = null;
 		try {
 		  stream = response.getOutputStream();
 		  File image = new File(new AudioFileDAO().getPicPathById(Integer.parseInt(URL)));
+		  System.out.println(new AudioFileDAO().getPicPathById(Integer.parseInt(URL)));
 		 // System.out.println(new AudioFileDAO().getPicPathById(Integer.parseInt(URL)));
 		  
 		  //set response headers
@@ -48,7 +50,7 @@ public class imageServlet extends HttpServlet {
 		  while ((readBytes = buf.read()) != -1)
 		    stream.write(readBytes);
 		} catch (IOException | SQLException ioe) {
-		  throw new ServletException(ioe.getMessage());
+			ioe.printStackTrace();
 		} finally {
 		  if (stream != null)
 		    stream.close();

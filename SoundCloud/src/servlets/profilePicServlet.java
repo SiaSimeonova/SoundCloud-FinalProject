@@ -22,43 +22,49 @@ import POJO.User;
 @WebServlet("/profilePicServlet")
 public class profilePicServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		ServletOutputStream stream = null;
 		BufferedInputStream buf = null;
-		try {
-		  stream = response.getOutputStream();
-		  File image = new File(((User)(request.getSession().getAttribute("user"))).getPicPath());
-		 // System.out.println(new AudioFileDAO().getPicPathById(Integer.parseInt(URL)));
-		  
-		  //set response headers
-		  response.setContentType("image"); 
+		try {File image =null;
+			stream = response.getOutputStream();
+			if (((User) (request.getSession().getAttribute("user"))).getPicPath() != null) {
+				image = new File(((User) (request.getSession().getAttribute("user"))).getPicPath());
+			}
+			else{
+				image= new File("C:\\Users\\Slavozar\\Desktop\\LAST WORKING VERSION\\SoundCloud3\\WebContent\\defProfile.jpg");
+			}
+			// System.out.println(new
+			// AudioFileDAO().getPicPathById(Integer.parseInt(URL)));
 
-		  response.addHeader("Content-Disposition", "attachment; filename=" + image.getName());
+			// set response headers
+			response.setContentType("image");
 
-		  response.setContentLength((int) image.length());
+			response.addHeader("Content-Disposition", "attachment; filename=" + image.getName());
 
-		  FileInputStream input = new FileInputStream(image);
-		  buf = new BufferedInputStream(input);
-		  int readBytes = 0;
-		  //read from the file; write to the ServletOutputStream
-		  while ((readBytes = buf.read()) != -1)
-		    stream.write(readBytes);
+			response.setContentLength((int) image.length());
+
+			FileInputStream input = new FileInputStream(image);
+			buf = new BufferedInputStream(input);
+			int readBytes = 0;
+			// read from the file; write to the ServletOutputStream
+			while ((readBytes = buf.read()) != -1)
+				stream.write(readBytes);
 		} catch (IOException ioe) {
-		  throw new ServletException(ioe.getMessage());
+			throw new ServletException(ioe.getMessage());
 		} finally {
-		  if (stream != null)
-		    stream.close();
-		  if (buf != null)
-		    buf.close();
+			if (stream != null)
+				stream.close();
+			if (buf != null)
+				buf.close();
 		}
-		
+
 	}
+
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
-
 
 }

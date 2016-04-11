@@ -4,6 +4,9 @@ public class AudioFile {
 
 	private static int audioCounter = 0;
 	private int id;
+	public void setId(int id) {
+		this.id = id;
+	}
 	private String URL;
 	
 
@@ -49,6 +52,10 @@ public class AudioFile {
 		this.timesPlayed = 0;
 		this.ownersID = ownersID;
 		this.id = ++audioCounter;
+	}
+
+	public AudioFile() {
+		
 	}
 
 	public String getURL() {

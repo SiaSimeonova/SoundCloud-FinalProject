@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ page errorPage="error.jsp" %>
+	
 <HTML>
 <HEAD>
 <TITLE>Verify Notify Example</TITLE>
@@ -80,31 +82,28 @@ if(request.getAttribute("error")!=null){
 	}
 %>
 
-	<FORM class="login" NAME="password_form" id="registerForm"
-		ACTION="./register" METHOD="POST">
-		<H3 style="color: red;"><%=error%></H3>
-		<h3 id="title">SIGN UP</h3>
-		<P>
-			<input type="text" name="username" id="username"
-				placeholder="Username" required="required" />
-		<P>
-			<INPUT TYPE=password name="password" required="required"
-				placeholder="Password" NAME=password1 onKeyUp="verify.check()">
-		<P>
+<FORM class="login" NAME="password_form" id="registerForm" ACTION="./register" METHOD="POST">
+<H3 style="color:red;"><%=error%></H3>
+<h3 id="title">SIGN UP</h3>
+<P>
+    	<input type="text" name="username" id="username" placeholder="Username" required="required" />
+<P>
+<INPUT TYPE=password name="password" required="required" placeholder="Password" NAME=password1 onKeyUp="verify.check()">
 
-			<INPUT TYPE=password placeholder="Type password again" NAME=password2
-				onKeyUp="verify.check()">
-		<P>
-			<input type="email" name="email" placeholder="E-mail"
-				required="required" />
-			<button type="submit" class="btn btn-primary btn-block btn-large">Register</button>
+<P>
 
-			<!-- Display a message if the passwords match or don't match -->
-		<DIV ID="password_result">&nbsp;</DIV>
+<INPUT TYPE=password placeholder="Type password again" NAME=password2 onKeyUp="verify.check()">
 
-	</FORM>
+<P>
+<input type="email" name="email" placeholder="E-mail" required="required" />
+        <button type="submit" class="btn btn-primary btn-block btn-large">Register</button>
 
-	<SCRIPT TYPE="text/javascript">
+<!-- Display a message if the passwords match or don't match -->
+<DIV ID="password_result">&nbsp;</DIV>
+
+</FORM>
+
+<SCRIPT TYPE="text/javascript">
 <!--
 
 verify = new verifynotify();

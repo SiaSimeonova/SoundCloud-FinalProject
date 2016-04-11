@@ -14,6 +14,11 @@ public class User {
 	private String picPath;
 	private List<AudioFile> myAudios;
 	private List<Playlist> playlists;
+	private List<Integer> uploadsIDs;
+
+	public List<Integer> getUploadsIDs() {
+		return uploadsIDs;
+	}
 
 	public User(String userName, String pass, String firstName, String surname, int age, String gender, String mail,
 			String picPath) {
@@ -23,6 +28,7 @@ public class User {
 		this.setAge(age);
 		this.setGender(gender);
 		this.setPicPath(picPath);
+		this.uploadsIDs=new ArrayList<Integer>();
 	}
 
 	public User(String userName, String pass, String mail) {
@@ -36,6 +42,7 @@ public class User {
 		this.setPicPath("empty");
 		myAudios = new ArrayList<AudioFile>();
 		playlists = new ArrayList<Playlist>();
+		this.uploadsIDs=new ArrayList<Integer>();
 	}
 
 	public String getUserName() {
@@ -122,6 +129,15 @@ public class User {
 
 	public void setMyAudios(List<AudioFile> myAudios) {
 		this.myAudios = myAudios;
+	}
+
+	public void setUploadsIDs(List<Integer> uploadsIDs) {
+		this.uploadsIDs = uploadsIDs;
+	}
+
+	public void addUpload(int uploadId) {
+		this.uploadsIDs.add(uploadId);
+		
 	}
 
 }

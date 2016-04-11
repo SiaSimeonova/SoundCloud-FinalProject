@@ -12,7 +12,7 @@ import db.DBConnection;
 
 public class UserDAO extends AbstractDAO implements IUserDAO {
 	private static final String INSERT_NEW_USER_SQL = "INSERT INTO users VALUES (null,?,?,null,null,0,null,?,null)";
-	private static final String SELECT_USER_SQL = "SELECT * FROM users WHERE username=?";
+	private static final String SELECT_USER_SQL = "SELECT * FROM users WHERE username=? and pasword=?";
 	private static final String DELETE_USER_SQL = "DELETE FROM users WHERE username=?";
 	private static final String UPDATE_USER_SQL = "UPDATE users SET pasword = ?, name = ?, surname = ?, years = ?, gender = ?, picture = ? WHERE username = ?";
 	private static final String FIND_USER_BY_USERNAME_SQL = "SELECT * FROM users WHERE username = ?";
@@ -65,6 +65,7 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 		try {
 			ps = DBConnection.getInstance().getCon().prepareStatement(SELECT_USER_SQL);
 			ps.setString(1, user);
+			ps.setString(2,password);
 			ResultSet result = ps.executeQuery();
 			return result.next();
 		} catch (SQLException e) {
@@ -364,5 +365,6 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 		}
 		return result.getInt(1);
 	}
+	
 
 }

@@ -1,29 +1,28 @@
 package servlets;
-import java.io.IOException;
-import java.util.List;
 
-import javax.security.auth.login.LoginException;
+import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import DAO.*;
-import POJO.*;
 
 /**
- * Servlet implementation class Search
+ * Servlet implementation class Like
  */
-@WebServlet("/Search")
-public class Search extends HttpServlet {
+@WebServlet("/Like")
+public class Like extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-			request.getRequestDispatcher("search.jsp?searchKey="+request.getParameter("searchKey")).forward(request, response);
+		AudioFileDAO dao = new AudioFileDAO();
+		dao.like((String)request.getSession(false).getAttribute("name"), Integer.parseInt(request.getParameter("id")));
+		response.sendRedirect("./Collections");
 	}
-	
+
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}

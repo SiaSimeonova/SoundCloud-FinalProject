@@ -16,5 +16,4 @@ public interface IAudioFileDAO {
 	public int getPostLikes(AudioFile audio) throws AudioDAOException ;
 	public List<Comment> getAllCommentsOfPost(AudioFile audio);
 	public int getSongId(AudioFile song);
-	public List<AudioFile> searchAudio(String audioName) throws AudioDAOException;
 }

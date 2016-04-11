@@ -26,14 +26,16 @@ public class register extends HttpServlet {
 		String password = request.getParameter("password");
 		String email = request.getParameter("email");
 		
-
+		User userToBeAdded=new User(username, password, email);
 		try {
-			new UserDAO().addUser(new User(username, password, email));
+			new UserDAO().addUser(userToBeAdded);
 		} catch (Exception e) {
 			request.setAttribute("error", e.getMessage());
 			request.getRequestDispatcher("./register.jsp").forward(request, response);
+			return;
 		}
-		response.sendRedirect("./register");
+		request.getSession().setAttribute("user", userToBeAdded);
+		response.sendRedirect("./Collection.jsp");
 	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		doPost(request,response);

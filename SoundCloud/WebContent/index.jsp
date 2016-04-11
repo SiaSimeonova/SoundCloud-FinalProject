@@ -3,6 +3,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
+<%@ page errorPage="error.jsp" %>
+
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -200,10 +202,11 @@
 	left: 80px;
 }
 
-#tracks{
-position: relative;
-top: 800px;
-width: 80%;}
+#tracks {
+	position: relative;
+	top: 800px;
+	width: 80%;
+}
 </style>
 
 </head>
@@ -251,14 +254,15 @@ width: 80%;}
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/scripts.js"></script>
 	<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-	 <div class="container-fluid" id="tracks">
+	<div class="container-fluid" id="tracks">
 		<div class="row">
-		
+
 			<div class="col-md-2">
 				<div id="firstAudio">
 					<audio id="audio_play">
-						<%AudioFileDAO dao=new AudioFileDAO();
-							int id=dao.getRandomIdFromDb();
+						<%
+							AudioFileDAO dao = new AudioFileDAO();
+							int id = dao.getRandomIdFromDb();
 						%>
 						<source src="./audioServlet/<%=id%>" type="audio/mpeg" />
 					</audio>
@@ -275,10 +279,12 @@ width: 80%;}
 				</div>
 			</div>
 			<div class="col-md-2">
-			<div id="secondAudio">
+				<div id="secondAudio">
 					<audio id="audio_play1">
 
-						<source src="./audioServlet/<%=new AudioFileDAO().getRandomIdFromDb()%>" type="audio/mpeg" />
+						<source
+							src="./audioServlet/<%=new AudioFileDAO().getRandomIdFromDb()%>"
+							type="audio/mpeg" />
 					</audio>
 					<div>
 						<img src="profilna.png" width="250px" height="250px" />
@@ -290,13 +296,14 @@ width: 80%;}
 								onClick="document.getElementById('audio_play1').pause(); return false;" />
 						</div>
 					</div>
-				</div></div>
+				</div>
+			</div>
 			<div class="col-md-2"></div>
 			<div class="col-md-2"></div>
 			<div class="col-md-2"></div>
 			<div class="col-md-2"></div>
-			
-	
+
+
 		</div>
 	</div>
 	</div>

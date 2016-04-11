@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import DAO.AudioDAOException;
+import DAO.AudioFileDAO;
 import DAO.UserDAO;
 import DAO.UserDAOException;
 import POJO.User;
@@ -35,6 +37,7 @@ public class login extends HttpServlet {
 			e1.printStackTrace();
 		}
 		if(isThereSuchUser){
+			
 			HttpSession session=request.getSession();
 			User userToBeAdded=null;
 			try {
@@ -44,12 +47,14 @@ public class login extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			userToBeAdded.setUploadsIDs(new AudioFileDAO().getUploadId(userToBeAdded.getUserName()));
 			session.setAttribute("user", userToBeAdded);
-			response.sendRedirect("./header.jsp");
+			
+			response.sendRedirect("./Collection.jsp");
 		}
 		else{
 			request.setAttribute("error","There is no such user");
-			request.getRequestDispatcher("./signIn.jsp").forward(request, response);
+			request.getRequestDispatcher("./signIn.jsp").forward(request, response);;
 		}
 	}
 
