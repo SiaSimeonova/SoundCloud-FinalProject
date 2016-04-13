@@ -1,10 +1,13 @@
 package db;
 
+<<<<<<< HEAD
 import java.sql.SQLException;
 
 import DAO.AudioFileDAO;
 import DAO.UserDAO;
 
+=======
+>>>>>>> df90a6b6b800ba5095dff452c2be2f002db777bf
 //import java.sql.PreparedStatement;
 //import java.sql.SQLException;
 //
@@ -17,7 +20,7 @@ import DAO.UserDAO;
 
 public class Demo {
 
-	public static void main(String[] args) throws SQLException {
+	public static void main(String[] args) {
 		
 //		Connection con=DBConnection.getInstance().getCon();
 //		PreparedStatement ps=con.prepareStatement("insert into users values(null,'ico','parola','slavozar',"

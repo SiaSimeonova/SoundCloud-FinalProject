@@ -89,7 +89,13 @@ public class User {
 	public void setGender(String gender) {
 		
 			this.gender = gender;
+<<<<<<< HEAD
 		
+=======
+		} else {
+			this.gender = "undefined";
+		}
+>>>>>>> df90a6b6b800ba5095dff452c2be2f002db777bf
 	}
 
 	public String getMail() {

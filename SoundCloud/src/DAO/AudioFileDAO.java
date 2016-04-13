@@ -5,10 +5,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+<<<<<<< HEAD
 
 import POJO.AudioFile;
 import POJO.Comment;
 import POJO.User;
+=======
+import POJO.AudioFile;
+import POJO.Comment;
+
+>>>>>>> df90a6b6b800ba5095dff452c2be2f002db777bf
 
 public class AudioFileDAO extends AbstractDAO implements IAudioFileDAO {
 	private static final String CHECK_IF_FILE_IS_LIKED = "select count(ID) from hateagram.likes where User_ID = ? and Post_ID = ? ;";
@@ -20,10 +26,16 @@ public class AudioFileDAO extends AbstractDAO implements IAudioFileDAO {
 	private static final String COMMENT_SQL = "insert into comments (user,idAudio,data) values (?,?,?)";
 	private static final String COUNT_MY_LIKES_SQL = "select count(ID) from likes where idAudio = ?";
 	private static final String LIST_MY_COMMENTS_SQL = "select * from COMMENTS where idAudio=?";
+<<<<<<< HEAD
 	private static final String GET_SONG_BY_ID_SQL = "SELECT URL FROM audiofiles  where idAudioFile like ?";
 	private static final String GET_RANDOM_ID_SQL = "SELECT idAudioFile FROM audiofiles  order by Rand() limit 1";
 	private static final String GET_IMAGE_URL_SQL = "SELECT Picture FROM audiofiles  where idAudioFile like ?";
 
+=======
+	private static final String SEARCH_FOR_AUDIOS_SQL = "SELECT * FROM audioFiles WHERE name like ? or autor like ?";
+	
+	
+>>>>>>> df90a6b6b800ba5095dff452c2be2f002db777bf
 	@Override
 	public int addAudio(AudioFile audio) throws AudioDAOException {
 		if (audio != null) {
@@ -42,8 +54,12 @@ public class AudioFileDAO extends AbstractDAO implements IAudioFileDAO {
 				ps.setInt(10, audio.getShares());
 				ps.setInt(11, audio.getDownloads());
 				ps.setInt(12, audio.getTimesPlayed());
+<<<<<<< HEAD
 				ps.setString(13, null);
 				ps.setInt(14, audio.getOwnersName());
+=======
+				ps.setString(13, audio.getOwnersName());
+>>>>>>> df90a6b6b800ba5095dff452c2be2f002db777bf
 				ps.executeUpdate();
 				ResultSet result = ps.getGeneratedKeys();
 				result.next();
@@ -82,7 +98,11 @@ public class AudioFileDAO extends AbstractDAO implements IAudioFileDAO {
 				ps.setInt(10, audio.getShares());
 				ps.setInt(11, audio.getDownloads());
 				ps.setInt(12, audio.getTimesPlayed());
+<<<<<<< HEAD
 				ps.setInt(13, audio.getOwnersName());
+=======
+				ps.setString(13, audio.getOwnersName());
+>>>>>>> df90a6b6b800ba5095dff452c2be2f002db777bf
 				ps.executeUpdate();
 				ResultSet result = ps.getGeneratedKeys();
 				if (result.next()) {
@@ -138,7 +158,11 @@ public class AudioFileDAO extends AbstractDAO implements IAudioFileDAO {
 			while (rs.next()) {
 				wantedAudio.add(new AudioFile(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
 						rs.getString(6), rs.getString(7), rs.getBoolean(8), rs.getInt(9), rs.getInt(10), rs.getInt(11),
+<<<<<<< HEAD
 						rs.getInt(12), rs.getInt(13), rs.getInt(14)));
+=======
+						rs.getInt(12), rs.getInt(13), rs.getString(14)));
+>>>>>>> df90a6b6b800ba5095dff452c2be2f002db777bf
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -250,6 +274,7 @@ public class AudioFileDAO extends AbstractDAO implements IAudioFileDAO {
 		}
 		return comments;
 	}
+<<<<<<< HEAD
 	public String getPathToSongById(int id) throws SQLException{
 		PreparedStatement ps=getCon().prepareStatement(GET_SONG_BY_ID_SQL);
 		ps.setInt(1, id);
@@ -268,5 +293,32 @@ public class AudioFileDAO extends AbstractDAO implements IAudioFileDAO {
 		ResultSet result=getCon().createStatement().executeQuery(GET_RANDOM_ID_SQL);
 		result.next();
 		return result.getInt(1);
+=======
+
+	@Override
+	public List<AudioFile> searchForAudios(String name) throws UserDAOException {
+		List<AudioFile> searchedAudios = new ArrayList<AudioFile>();
+		PreparedStatement ps = null;
+		try {
+			ps = getCon().prepareStatement(SEARCH_FOR_AUDIOS_SQL);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				searchedAudios.add(new AudioFile(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+						rs.getString(6), rs.getString(7), rs.getBoolean(8), rs.getInt(9), rs.getInt(10), rs.getInt(11),
+						rs.getInt(12), rs.getInt(13), rs.getString(14)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (ps != null) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return searchedAudios;	
+>>>>>>> df90a6b6b800ba5095dff452c2be2f002db777bf
 	}
 }
