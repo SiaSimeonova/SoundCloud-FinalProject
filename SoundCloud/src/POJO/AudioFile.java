@@ -4,6 +4,9 @@ public class AudioFile {
 
 	private static int audioCounter = 0;
 	private int id;
+	public void setId(int id) {
+		this.id = id;
+	}
 	private String URL;
 	
 
@@ -18,19 +21,11 @@ public class AudioFile {
 	private int shares;
 	private int downloads;
 	private int timesPlayed;
-<<<<<<< HEAD
 	private int ownersID;
 
 	public AudioFile(String uRL, String category, String name, String autor, String description, String picture,
 			boolean isPrivate, int likes, int reposts, int shares, int downloads, int timesPlayed, int ownersID) {
 		this(uRL, name, ownersID);
-=======
-	private String ownersName;
-
-	public AudioFile(String uRL, String category, String name, String autor, String description, String picture,
-			boolean isPrivate, int likes, int reposts, int shares, int downloads, int timesPlayed, String ownersName) {
-		this(uRL, name, ownersName);
->>>>>>> df90a6b6b800ba5095dff452c2be2f002db777bf
 		this.category = category;
 		this.autor = autor;
 		this.description = description;
@@ -43,13 +38,8 @@ public class AudioFile {
 		this.timesPlayed = timesPlayed;
 	}
 
-<<<<<<< HEAD
 	public AudioFile(String uRL, String name, int ownersID) {
 		this.URL = uRL;
-=======
-	public AudioFile(String uRL, String name, String ownersName) {
-		URL = uRL;
->>>>>>> df90a6b6b800ba5095dff452c2be2f002db777bf
 		this.name = name;
 		this.autor = "empty";
 		this.description = "empty";
@@ -60,12 +50,12 @@ public class AudioFile {
 		this.shares = 0;
 		this.downloads = 0;
 		this.timesPlayed = 0;
-<<<<<<< HEAD
 		this.ownersID = ownersID;
-=======
-		this.ownersName = ownersName;
->>>>>>> df90a6b6b800ba5095dff452c2be2f002db777bf
 		this.id = ++audioCounter;
+	}
+
+	public AudioFile() {
+		
 	}
 
 	public String getURL() {
@@ -168,7 +158,6 @@ public class AudioFile {
 		this.timesPlayed = timesPlayed;
 	}
 
-<<<<<<< HEAD
 	public int getOwnersName() {
 		return ownersID;
 	}
@@ -180,14 +169,4 @@ public class AudioFile {
 	public String toString() {
 		return "AudioFile [URL=" + URL + ", category=" + category + ", name=" + name + ", autor=" + autor + "]";
 	}
-=======
-	public String getOwnersName() {
-		return ownersName;
-	}
-
-	public void setOwnersName(String ownersName) {
-		this.ownersName = ownersName;
-	}
-
->>>>>>> df90a6b6b800ba5095dff452c2be2f002db777bf
 }

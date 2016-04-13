@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" errorPage="error.jsp"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
+<%@ page errorPage="error.jsp" %>
+
+
 <html >
   <head>
     <meta charset="UTF-8">
@@ -79,10 +82,17 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
   </head>
 
   <body>
-
+	<%
+String error="";
+if(request.getAttribute("error")!=null){
+	error=(String)request.getAttribute("error");
+	}
+%>	
     <div class="login">
+  <H3 style="color:red;"><%=error%></H3>
 	<h1>Login</h1>
     <form  action="./login" method="post">
+      
     	<input type="text" name="username" placeholder="Username" required="required" />
         <input type="password" name="password" placeholder="Password" required="required" />
         <button type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button>

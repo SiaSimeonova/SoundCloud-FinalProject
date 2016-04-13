@@ -12,13 +12,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import DAO.AudioDAOException;
 import DAO.AudioFileDAO;
 import DAO.UserDAO;
+import DAO.UserDAOException;
 import POJO.AudioFile;
 import POJO.User;
+import UnitTests.UserDaoTests;
 
 
 
@@ -40,10 +43,14 @@ public class Upload extends HttpServlet {
 	    InputStream picContent=pic.getInputStream();
 	    String folder=((User)request.getSession().getAttribute("user")).getUserName();
 	  
-	    File uploads = new File("E:\\STORAGE\\"+folder);
-	    uploads.mkdirs();
-	    File picFile= new File(uploads,request.getParameter("trackName")+".png");
+	    File uploads = new File("E:\\STORAGE\\"+folder+"\\uploads");
+	   
+	   
+	    File picFile= new File(uploads,request.getParameter("trackName")+".jpg");
 	    File file = new File(uploads, request.getParameter("trackName")+".mp3");
+	    picFile.delete();
+	    file.delete();
+	    uploads.mkdirs();
 	    int userID=0;
 		try {
 			userID = new UserDAO().getUserId(folder);
@@ -64,11 +71,21 @@ public class Upload extends HttpServlet {
     	fileToUpload.setCategory(request.getParameter("category"));
     	fileToUpload.setDescription(request.getParameter("description"));
     	fileToUpload.setPicture(picFile.getAbsolutePath());
-		new AudioFileDAO().addAudio(fileToUpload);
+		int uploadId=new AudioFileDAO().addAudio(fileToUpload);
+		User currentUser=(User)request.getSession().getAttribute("user");
+		currentUser.addUpload(uploadId);
+		request.getSession().setAttribute("user", currentUser);
 	} catch (AudioDAOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
+//    try {
+//		request.getSession().setAttribute("uploads", new AudioFileDAO().getUploads(folder));
+//	} catch (AudioDAOException e) {
+//		// TODO Auto-generated catch block
+//		e.printStackTrace();
+//	}
+    response.sendRedirect("./Collection.jsp");
 		}
 	
 

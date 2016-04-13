@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ page errorPage="error.jsp" %>
+	
 <HTML>
+
 <HEAD>
 <TITLE>Verify Notify Example</TITLE>
 <link rel="stylesheet" href="css/normalize.css">
@@ -142,6 +145,12 @@ position: relative;
   
 </HEAD>
 <BODY>
+<%
+			if (session.getAttribute("user") == null) {
+				response.sendRedirect("index.jsp");
+				return;
+			}
+		%>
 <%@include file="header.jsp" %>
 <H1></H1>
 

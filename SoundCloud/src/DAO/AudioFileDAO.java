@@ -5,16 +5,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-<<<<<<< HEAD
+
+import org.eclipse.jdt.internal.compiler.classfmt.MethodInfoWithAnnotations;
 
 import POJO.AudioFile;
 import POJO.Comment;
 import POJO.User;
-=======
-import POJO.AudioFile;
-import POJO.Comment;
-
->>>>>>> df90a6b6b800ba5095dff452c2be2f002db777bf
 
 public class AudioFileDAO extends AbstractDAO implements IAudioFileDAO {
 	private static final String CHECK_IF_FILE_IS_LIKED = "select count(ID) from hateagram.likes where User_ID = ? and Post_ID = ? ;";
@@ -22,20 +18,18 @@ public class AudioFileDAO extends AbstractDAO implements IAudioFileDAO {
 	private static final String DELETE_AUDIO_SQL = "DELETE FROM audiofiles WHERE idAudioFile=?";
 	private static final String UPDATE_AUDIO_SQL = "UPDATE audiofiles SET URL = ?, Category = ?, Name = ?, Autor = ?, Description = ?, Picture = ?, isPrivate = ?, Likes = ?, Repost = ?, Shares = ?, Downloads = ?, Played = ?, Owner = ? WHERE idAudioFile = ?";
 	private static final String LIKE_SQL = "insert into likes (user,idAudio) values (?,?)";
-	private static final String LIST_WONTED_AUDIOS_SQL = "select from audiofiles where Owner = ?";
+	private static final String LIST_WONTED_AUDIOS_SQL = "select * from audiofiles a join users u on (a.Owner=u.idUser) where u.username=?";
+																
+																
 	private static final String COMMENT_SQL = "insert into comments (user,idAudio,data) values (?,?,?)";
 	private static final String COUNT_MY_LIKES_SQL = "select count(ID) from likes where idAudio = ?";
 	private static final String LIST_MY_COMMENTS_SQL = "select * from COMMENTS where idAudio=?";
-<<<<<<< HEAD
 	private static final String GET_SONG_BY_ID_SQL = "SELECT URL FROM audiofiles  where idAudioFile like ?";
 	private static final String GET_RANDOM_ID_SQL = "SELECT idAudioFile FROM audiofiles  order by Rand() limit 1";
 	private static final String GET_IMAGE_URL_SQL = "SELECT Picture FROM audiofiles  where idAudioFile like ?";
-
-=======
-	private static final String SEARCH_FOR_AUDIOS_SQL = "SELECT * FROM audioFiles WHERE name like ? or autor like ?";
-	
-	
->>>>>>> df90a6b6b800ba5095dff452c2be2f002db777bf
+	private static final String GET_SONG_ID_SQL="SELECT idAudioFile FROM audiofiles where Name like ?";
+	private static final String GET_SONG_BY_ID="SELECT * FROM audiofiles where idAudioFile=?";
+	private static final String LIST_SEARCHED_AUDIOS_SQL = "SELECT * FROM mydb.audiofiles where Name like ? or Autor like ? or Category like ? or Description like ?";
 	@Override
 	public int addAudio(AudioFile audio) throws AudioDAOException {
 		if (audio != null) {
@@ -54,12 +48,8 @@ public class AudioFileDAO extends AbstractDAO implements IAudioFileDAO {
 				ps.setInt(10, audio.getShares());
 				ps.setInt(11, audio.getDownloads());
 				ps.setInt(12, audio.getTimesPlayed());
-<<<<<<< HEAD
 				ps.setString(13, null);
 				ps.setInt(14, audio.getOwnersName());
-=======
-				ps.setString(13, audio.getOwnersName());
->>>>>>> df90a6b6b800ba5095dff452c2be2f002db777bf
 				ps.executeUpdate();
 				ResultSet result = ps.getGeneratedKeys();
 				result.next();
@@ -98,11 +88,7 @@ public class AudioFileDAO extends AbstractDAO implements IAudioFileDAO {
 				ps.setInt(10, audio.getShares());
 				ps.setInt(11, audio.getDownloads());
 				ps.setInt(12, audio.getTimesPlayed());
-<<<<<<< HEAD
 				ps.setInt(13, audio.getOwnersName());
-=======
-				ps.setString(13, audio.getOwnersName());
->>>>>>> df90a6b6b800ba5095dff452c2be2f002db777bf
 				ps.executeUpdate();
 				ResultSet result = ps.getGeneratedKeys();
 				if (result.next()) {
@@ -147,22 +133,70 @@ public class AudioFileDAO extends AbstractDAO implements IAudioFileDAO {
 			}
 		}
 	}
-
-	@Override
-	public List<AudioFile> searchAudio(String audioName) throws AudioDAOException {
-		List<AudioFile> wantedAudio = new ArrayList<AudioFile>();
+	public List<Integer> getUploadId(String owner){
+		List<Integer> wantedAudio = new ArrayList<Integer>();
 		PreparedStatement ps = null;
 		try {
 			ps = getCon().prepareStatement(LIST_WONTED_AUDIOS_SQL);
+			ps.setString(1, owner);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				wantedAudio.add(rs.getInt("idAudioFile"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (ps != null) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return wantedAudio;
+	}
+	public List<AudioFile> getSearchedTracks(String key) throws AudioDAOException {
+		List<AudioFile> wantedAudio = new ArrayList<AudioFile>();
+		PreparedStatement ps = null;
+		try {
+			ps = getCon().prepareStatement(LIST_SEARCHED_AUDIOS_SQL);
+			ps.setString(1, key);
+			ps.setString(2, key);
+			ps.setString(3, key);
+			ps.setString(4, key);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				wantedAudio.add(new AudioFile(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
 						rs.getString(6), rs.getString(7), rs.getBoolean(8), rs.getInt(9), rs.getInt(10), rs.getInt(11),
-<<<<<<< HEAD
 						rs.getInt(12), rs.getInt(13), rs.getInt(14)));
-=======
-						rs.getInt(12), rs.getInt(13), rs.getString(14)));
->>>>>>> df90a6b6b800ba5095dff452c2be2f002db777bf
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (ps != null) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return wantedAudio;
+	}
+
+	@Override
+	public List<AudioFile> getUploads(String owner) throws AudioDAOException {
+		List<AudioFile> wantedAudio = new ArrayList<AudioFile>();
+		PreparedStatement ps = null;
+		try {
+			ps = getCon().prepareStatement(LIST_WONTED_AUDIOS_SQL);
+			ps.setString(1, owner);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				wantedAudio.add(new AudioFile(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+						rs.getString(6), rs.getString(7), rs.getBoolean(8), rs.getInt(9), rs.getInt(10), rs.getInt(11),
+						rs.getInt(12), rs.getInt(13), rs.getInt(14)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -274,42 +308,61 @@ public class AudioFileDAO extends AbstractDAO implements IAudioFileDAO {
 		}
 		return comments;
 	}
-<<<<<<< HEAD
 	public String getPathToSongById(int id) throws SQLException{
 		PreparedStatement ps=getCon().prepareStatement(GET_SONG_BY_ID_SQL);
 		ps.setInt(1, id);
 		ResultSet result=ps.executeQuery();
 		result.next();
-		return result.getString(1);
+		String path=result.getString(1);
+			if (ps != null) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			
+		}
+		return path;
 	}
 	public String getPicPathById(int id) throws SQLException{
 		PreparedStatement ps=getCon().prepareStatement(GET_IMAGE_URL_SQL);
 		ps.setInt(1, id);
 		ResultSet result=ps.executeQuery();
 		result.next();
-		return result.getString(1);
+		String path=result.getString(1);
+			if (ps != null) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			
+		}
+		return path;
 	}
 	public int getRandomIdFromDb() throws SQLException{
 		ResultSet result=getCon().createStatement().executeQuery(GET_RANDOM_ID_SQL);
 		result.next();
+		
+			
+		
 		return result.getInt(1);
-=======
+	}
 
 	@Override
-	public List<AudioFile> searchForAudios(String name) throws UserDAOException {
-		List<AudioFile> searchedAudios = new ArrayList<AudioFile>();
+	public int getSongId(AudioFile song) {
 		PreparedStatement ps = null;
+		int result=0;
 		try {
-			ps = getCon().prepareStatement(SEARCH_FOR_AUDIOS_SQL);
+			ps = getCon().prepareStatement(GET_SONG_ID_SQL);
+			ps.setString(1, song.getName());
 			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-				searchedAudios.add(new AudioFile(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-						rs.getString(6), rs.getString(7), rs.getBoolean(8), rs.getInt(9), rs.getInt(10), rs.getInt(11),
-						rs.getInt(12), rs.getInt(13), rs.getString(14)));
+			rs.next();
+			result= rs.getInt(1);
 			}
-		} catch (SQLException e) {
+		 catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
+		}finally {
 			if (ps != null) {
 				try {
 					ps.close();
@@ -318,7 +371,26 @@ public class AudioFileDAO extends AbstractDAO implements IAudioFileDAO {
 				}
 			}
 		}
-		return searchedAudios;	
->>>>>>> df90a6b6b800ba5095dff452c2be2f002db777bf
+		return result;
+	}
+	public AudioFile getSongById(int id) throws SQLException{
+		AudioFile song=new AudioFile();
+		PreparedStatement ps=getCon().prepareStatement(GET_SONG_BY_ID);
+		ps.setInt(1, id);
+		ResultSet result=ps.executeQuery();
+		result.next();
+		song.setId(result.getInt("idAudioFile"));
+		song.setURL(result.getString("URL"));
+		
+		song.setCategory(result.getString("Category"));
+		song.setName(result.getString("Name"));
+		song.setAutor(result.getString("Autor"));
+		song.setDescription(result.getString("Description"));
+		song.setPicture(result.getString("Picture"));
+		song.setOwnersName(result.getInt("Owner"));
+		
+		return song;
 	}
 }
+
+

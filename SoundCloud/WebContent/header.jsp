@@ -1,7 +1,9 @@
 <%@page import="POJO.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" errorPage="error.jsp"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page errorPage="error.jsp" %>
+
 <html>
 <head>
 <meta http-equiv="Content-Type">
@@ -16,10 +18,11 @@
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <style>
-#search_form {
-	position: relative;
-	top: -40px;
-	left: 70%;
+#search_form{
+
+position: relative;
+ top: -40px;
+ left: 70%;
 }
 
 #keyword {
@@ -36,16 +39,13 @@
 </style>
 </head>
 <body>
-<<<<<<< HEAD
+<%
+			if (session.getAttribute("user") == null) {
+				response.sendRedirect("index.jsp");
+				return;
+			}
+		%>
 	
-=======
-	<%
-		if (session.getAttribute("user") == null) {
-			out.print("Please sign in or register: http://localhost:8080/SoundCloud");
-			return;
-		}
-	%>
->>>>>>> df90a6b6b800ba5095dff452c2be2f002db777bf
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -55,9 +55,9 @@
 		</div>
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="#">Home</a></li>
-			<li><a href="#">Collection</a></li>
+			<li><a href="./Collection.jsp">Collection</a></li>
 
-			<form id="search_form" action="subscribe" method="post">
+			<form id="search_form" action="./Search" method="post">
 
 				<input class="text" placeholder="Search for your favorite tracks "
 					id="keyword" type="text" name="searchWord" /> <input
@@ -69,31 +69,19 @@
 
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-<<<<<<< HEAD
 			<li><a href="upload.jsp">
 					Upload </a></li>
-=======
-			<li><a href="#"> Upload </a></li>
->>>>>>> df90a6b6b800ba5095dff452c2be2f002db777bf
 			<li><a href="#"><span class="glyphicon glyphicon-user"></span>
-					Hello <%=((User) session.getAttribute("user")).getUserName()%></a></li>
+					Hello <%=((User)session.getAttribute("user")).getUserName()%></a></li>
 			<li class="dropdown"><a class="dropdown-toggle"
 				data-toggle="dropdown" href="#">Options <span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li><a href="./profile.jsp">Profile</a></li>
-<<<<<<< HEAD
 					
 				</ul></li>
 
 
-			<li><a href="./index.jsp"><span 
-=======
-
-				</ul></li>
-
-
-			<li><a href="Logout"><span
->>>>>>> df90a6b6b800ba5095dff452c2be2f002db777bf
+			<li><a href="./Logout"><span 
 					class="glyphicon glyphicon-log-in"></span> Logout </a></li>
 		</ul>
 

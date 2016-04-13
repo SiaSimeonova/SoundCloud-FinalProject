@@ -89,11 +89,7 @@ public class UserDaoTests {
 		}
 	}
 	
-<<<<<<< HEAD
 	@Test (dataProvider = "user")
-=======
-	@Test (dataProvider = "user", enabled = false)
->>>>>>> df90a6b6b800ba5095dff452c2be2f002db777bf
 	public static void TestCountFollowing(User follower) throws UserDAOException {
 		try {
 			int followers = DAO.UserDAO.class.newInstance().getFollowing(follower);

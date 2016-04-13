@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" errorPage="error.jsp"%>
+	pageEncoding="ISO-8859-1"%>
+	<%@ page errorPage="error.jsp" %>
+	
 <HTML>
 <HEAD>
 <TITLE>Verify Notify Example</TITLE>
@@ -72,14 +74,21 @@ color: white;
     </style>
 </HEAD>
 <BODY>
-<H1></H1>
+
+	<%
+String error="";
+if(request.getAttribute("error")!=null){
+	error=(String)request.getAttribute("error");
+	}
+%>
 
 <FORM class="login" NAME="password_form" id="registerForm" ACTION="./register" METHOD="POST">
+<H3 style="color:red;"><%=error%></H3>
 <h3 id="title">SIGN UP</h3>
 <P>
     	<input type="text" name="username" id="username" placeholder="Username" required="required" />
 <P>
-<INPUT TYPE=password name="password" placeholder="Password" NAME=password1 onKeyUp="verify.check()">
+<INPUT TYPE=password name="password" required="required" placeholder="Password" NAME=password1 onKeyUp="verify.check()">
 
 <P>
 

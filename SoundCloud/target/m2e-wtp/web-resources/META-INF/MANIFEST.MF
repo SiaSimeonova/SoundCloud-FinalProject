@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
-Built-By: Slavozar
-Build-Jdk: 1.8.0_73
-=======
-Built-By: SYA
+Built-By: Sia
 Build-Jdk: 1.8.0_77
->>>>>>> df90a6b6b800ba5095dff452c2be2f002db777bf
 Created-By: Maven Integration for Eclipse
 
