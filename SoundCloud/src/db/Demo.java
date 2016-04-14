@@ -39,18 +39,18 @@ public class Demo {
 		//System.out.println(new UserDAO().getUser("slavozar").getPicPath());
 //		
 //		
-		List<AudioFile> list=new AudioFileDAO().getUploads("slavozar");
+//		List<AudioFile> list=new AudioFileDAO().getUploads("slavozar");
+//		
+//		for(AudioFile song: list){
+//			System.out.println(song.getId());
+//		}
+//		List<AudioFile> list1=new AudioFileDAO().getUploads("slavozar");
+//		System.out.println("Vtori pat");
+//		for(AudioFile song: list1){
+//			System.out.println(song.getId());
+//		}
 		
-		for(AudioFile song: list){
-			System.out.println(song.getId());
-		}
-		List<AudioFile> list1=new AudioFileDAO().getUploads("slavozar");
-		System.out.println("Vtori pat");
-		for(AudioFile song: list1){
-			System.out.println(song.getId());
-		}
-		
-		
+		dao.like("Bounce");
 	}
 
 }

@@ -51,7 +51,7 @@ position: relative;
 		<div class="navbar-header">
 
 			<img src="images/logo.jpg" class="img-rounded" alt="Cinque Terre"
-				width="50" height="50"> <a class="navbar-brand" href="#">SoundBlast</a>
+				width="50" height="50"> <a class="navbar-brand" href="index.jsp">SoundBlast</a>
 		</div>
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="#">Home</a></li>

@@ -30,7 +30,7 @@ public class UserDaoTests {
 				{ new User("user5", "pass8", "mail6@abv.bg") , new User("user7", "pass7", "mail5@abv.bg") }};
 	}
 
-	@Test(dataProvider = "user", enabled = false)
+	@Test(dataProvider = "user")
 	public static void testAddUser(User user) throws UserDAOException {
 		int id = 0;
 		try {
@@ -43,14 +43,14 @@ public class UserDaoTests {
 		System.out.println("Aded " + id);
 	}
 
-	@Test(dependsOnMethods = { "testAddUser" }, dataProvider = "user", enabled = false)
+	@Test(dependsOnMethods =  "testAddUser" , dataProvider = "user", enabled = false)
 	public static void getUser(User user) throws InstantiationException, IllegalAccessException, UserDAOException {
 		String wantedUsername = user.getUserName();
 		User wanted = DAO.UserDAO.class.newInstance().getUser(wantedUsername);
 		assertEquals(wanted.getUserName(), user.getUserName());
 	}
 
-	@Test(dependsOnMethods = { "testAddUser", "getUser" }, dataProvider = "user", enabled = false)
+	@Test(dependsOnMethods = { "testAddUser"}, dataProvider = "user", enabled = false)
 	public static void editUser(User user) throws UserDAOException {
 		int age = 0;
 		user.setAge(15);
@@ -65,7 +65,7 @@ public class UserDaoTests {
 		System.out.println("Edited " + age);
 	}
 
-	@Test(dataProvider = "followers", enabled = false)
+	@Test(dataProvider = "followers", enabled = false )
 	public static void addFollower(User userToFollow, User follower) throws UserDAOException {
 		try {
 			int result = DAO.UserDAO.class.newInstance().followUser(userToFollow, follower);
@@ -89,7 +89,7 @@ public class UserDaoTests {
 		}
 	}
 	
-	@Test (dataProvider = "user")
+	@Test (dataProvider = "user", enabled = false)
 	public static void TestCountFollowing(User follower) throws UserDAOException {
 		try {
 			int followers = DAO.UserDAO.class.newInstance().getFollowing(follower);
@@ -101,7 +101,8 @@ public class UserDaoTests {
 		}
 	}
 
-	@Test(dependsOnMethods = { "testAddUser", "getUser", "editUser" }, dataProvider = "user", enabled = false)
+	
+	@Test( dataProvider = "user", enabled = false)
 	public static void deleteUser(User user) throws UserDAOException {
 		try {
 			String userName = user.getUserName();

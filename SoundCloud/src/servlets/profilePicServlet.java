@@ -28,18 +28,17 @@ public class profilePicServlet extends HttpServlet {
 
 		ServletOutputStream stream = null;
 		BufferedInputStream buf = null;
-		try {File image =null;
+		try {
+			File image =null;
 			stream = response.getOutputStream();
-			if (((User) (request.getSession().getAttribute("user"))).getPicPath() != null) {
+			String path=((User) (request.getSession().getAttribute("user"))).getPicPath();
+			if (path != null && !path.equals("empty") ) {
 				image = new File(((User) (request.getSession().getAttribute("user"))).getPicPath());
 			}
 			else{
 				image= new File("C:\\Users\\Slavozar\\Desktop\\LAST WORKING VERSION\\SoundCloud3\\WebContent\\defProfile.jpg");
 			}
-			// System.out.println(new
-			// AudioFileDAO().getPicPathById(Integer.parseInt(URL)));
-
-			// set response headers
+			
 			response.setContentType("image");
 
 			response.addHeader("Content-Disposition", "attachment; filename=" + image.getName());

@@ -13,11 +13,11 @@ import POJO.Comment;
 import POJO.User;
 
 public class AudioFileDAO extends AbstractDAO implements IAudioFileDAO {
-	private static final String CHECK_IF_FILE_IS_LIKED = "select count(ID) from hateagram.likes where User_ID = ? and Post_ID = ? ;";
+	private static final String CHECK_IF_FILE_IS_LIKED = "select Likes from audiofiles where Name like ?;";
 	private static final String INSERT_NEW_AUDIO_SQL = "INSERT INTO audiofiles VALUES (null,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	private static final String DELETE_AUDIO_SQL = "DELETE FROM audiofiles WHERE idAudioFile=?";
 	private static final String UPDATE_AUDIO_SQL = "UPDATE audiofiles SET URL = ?, Category = ?, Name = ?, Autor = ?, Description = ?, Picture = ?, isPrivate = ?, Likes = ?, Repost = ?, Shares = ?, Downloads = ?, Played = ?, Owner = ? WHERE idAudioFile = ?";
-	private static final String LIKE_SQL = "insert into likes (user,idAudio) values (?,?)";
+	private static final String LIKE_SQL = "UPDATE audiofiles SET Likes=? WHERE idAudioFile=?;";
 	private static final String LIST_WONTED_AUDIOS_SQL = "select * from audiofiles a join users u on (a.Owner=u.idUser) where u.username=?";
 																
 																
@@ -25,7 +25,7 @@ public class AudioFileDAO extends AbstractDAO implements IAudioFileDAO {
 	private static final String COUNT_MY_LIKES_SQL = "select count(ID) from likes where idAudio = ?";
 	private static final String LIST_MY_COMMENTS_SQL = "select * from COMMENTS where idAudio=?";
 	private static final String GET_SONG_BY_ID_SQL = "SELECT URL FROM audiofiles  where idAudioFile like ?";
-	private static final String GET_RANDOM_ID_SQL = "SELECT idAudioFile FROM audiofiles  order by Rand() limit 1";
+	private static final String GET_RANDOM_ID_SQL = "select * from audiofiles  where idAudioFile order by rand() limit 3;";
 	private static final String GET_IMAGE_URL_SQL = "SELECT Picture FROM audiofiles  where idAudioFile like ?";
 	private static final String GET_SONG_ID_SQL="SELECT idAudioFile FROM audiofiles where Name like ?";
 	private static final String GET_SONG_BY_ID="SELECT * FROM audiofiles where idAudioFile=?";
@@ -133,6 +133,7 @@ public class AudioFileDAO extends AbstractDAO implements IAudioFileDAO {
 			}
 		}
 	}
+	
 	public List<Integer> getUploadId(String owner){
 		List<Integer> wantedAudio = new ArrayList<Integer>();
 		PreparedStatement ps = null;
@@ -211,22 +212,23 @@ public class AudioFileDAO extends AbstractDAO implements IAudioFileDAO {
 		}
 		return wantedAudio;
 	}
-
-	@Override
-	public void like(String username, int audioID) {
+	
+	
+	public void like(String songname) {
 		PreparedStatement ps = null;
 		try {
 			ps = getCon().prepareStatement(CHECK_IF_FILE_IS_LIKED);
-			ps.setString(1, username);
-			ps.setInt(2, audioID);
+			ps.setString(1, songname);			
 			ResultSet rs = ps.executeQuery();
 			rs.next();
-			int isLiked = rs.getInt(1);
-			if (isLiked >= 1)
-				return;
-			java.sql.PreparedStatement st = getCon().prepareStatement(LIKE_SQL);
-			st.setInt(1, audioID);
-			st.setString(2, username);
+			int likes = rs.getInt(1);
+			PreparedStatement st = getCon().prepareStatement(LIKE_SQL);
+			PreparedStatement getSongIdStatement=getCon().prepareStatement(GET_SONG_ID_SQL);
+			getSongIdStatement.setString(1,songname );			
+			ResultSet id=getSongIdStatement.executeQuery();
+			id.next();
+			st.setInt(1, ++likes);
+			st.setInt(2, id.getInt("idAudioFile"));
 			st.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -340,13 +342,16 @@ public class AudioFileDAO extends AbstractDAO implements IAudioFileDAO {
 		}
 		return path;
 	}
-	public int getRandomIdFromDb() throws SQLException{
+	public List<Integer> getRandomIdFromDb() throws SQLException{
 		ResultSet result=getCon().createStatement().executeQuery(GET_RANDOM_ID_SQL);
-		result.next();
-		
+		List<Integer> res=new ArrayList();
+		int index=0;
+		while(result.next()){
+			res.add(result.getInt(1));
+		}
 			
 		
-		return result.getInt(1);
+		return res;
 	}
 
 	@Override

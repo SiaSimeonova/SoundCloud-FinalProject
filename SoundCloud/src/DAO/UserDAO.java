@@ -39,7 +39,7 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 					result.next();
 					return result.getInt(1);
 				}catch(SQLIntegrityConstraintViolationException e) {
-					throw new UserDAOException("Email already taken", e);
+					throw new UserDAOException("User with this credentials already exists!", e);
 				}
 				catch (Exception e) {
 					e.printStackTrace();

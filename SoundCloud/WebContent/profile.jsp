@@ -55,15 +55,7 @@ top:80px;
 		<div class="col-md-12">
 			<div class="row">
 				<div class="col-md-2">
-				<%String picPath=((User)(session.getAttribute("user"))).getPicPath();
-			
-				if(picPath==null){
-					picPath="defProfile.jpg";
-				}
-				else{
-					picPath="./profilePicServlet";
-				}
-				%>
+				
 					<img  src="./profilePicServlet" class="img-circle" width="240px" height="240px">
 				</div>
 				<div class="col-md-6">
@@ -86,6 +78,27 @@ top:80px;
 					<h3>
 						<%=lastName %>
 					</h3>
+					<%  String age=null;
+					Integer years=((User)session.getAttribute("user")).getAge();
+						if(years==0){
+							age="";
+						}else{
+							age=years.toString();
+						}
+						
+						%>
+					<h3>
+						<%=age %>
+					</h3>
+					<% String email=((User)session.getAttribute("user")).getMail();
+							if(email==null){
+									email="";
+							}
+						
+						%>
+					<h3>
+						<%=email %>
+					</h3>
 					</div>
 				</div>
 				<div class="col-md-4">
@@ -95,18 +108,7 @@ top:80px;
 			</div>
 			<div class="row">
 				<div class="col-md-8">
-					<ul class="nav nav-tabs">
-						<li class="active">
-							<a href="#">All</a>
-						</li>
-						<li>
-							<a href="#">Tracks</a>
-						</li>
-						<li >
-							<a href="#">Playlists</a>
-						</li>
-						
-					</ul>
+					
 				</div>
 				<div class="col-md-4">
 					<div class="row">

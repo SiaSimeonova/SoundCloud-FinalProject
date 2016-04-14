@@ -107,8 +107,7 @@
 						request.setAttribute("author", song.getAutor());
 						request.setAttribute("ganre", song.getCategory());
 						request.setAttribute("owner", song.getOwnersName());
-						request.setAttribute("like", song.getLikes());
-						request.setAttribute("id", song.getId());
+						request.setAttribute("picId", new AudioFileDAO().getSongId(song));
 			%>
 
 			<%@include file="./template.jsp"%>

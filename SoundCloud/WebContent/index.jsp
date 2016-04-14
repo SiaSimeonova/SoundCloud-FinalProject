@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="DAO.AudioFileDAO"%>
 <%@page import="DAO.UserDAO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -204,9 +205,13 @@
 
 #tracks {
 	position: relative;
-	top: 800px;
+	top: 400px;
 	width: 80%;
+	left: 110px;
 }
+#trackTitle{
+position: relative;
+top:30px;}
 </style>
 
 </head>
@@ -256,18 +261,18 @@
 	<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 	<div class="container-fluid" id="tracks">
 		<div class="row">
-
-			<div class="col-md-2">
+			<div id="tracks">
+			<div class="col-md-4">
 				<div id="firstAudio">
 					<audio id="audio_play">
 						<%
 							AudioFileDAO dao = new AudioFileDAO();
-							int id = dao.getRandomIdFromDb();
+							List<Integer> id= dao.getRandomIdFromDb();
 						%>
-						<source src="./audioServlet/<%=id%>" type="audio/mpeg" />
+						<source src="./audioServlet/<%=id.get(0)%>" type="audio/mpeg" />
 					</audio>
 					<div>
-						<img src="./imageServlet/<%=id%>" width="250px" height="250px" />
+						<img src="./imageServlet/<%=id.get(0)%>" width="250px" height="250px" />
 						<div id="buttons">
 							<img src="play.png" width="50px" height="50px"
 								onClick="document.getElementById('audio_play').play(); return false;" />
@@ -277,18 +282,17 @@
 						</div>
 					</div>
 				</div>
+				<h3 id="trackTitle"><%=dao.getSongById(id.get(0)).getName() %></h3>
 			</div>
-			<div class="col-md-2">
-				<div id="secondAudio">
+			<div class="col-md-4">
+				<div id="firstAudio">
 					<audio id="audio_play1">
-
-						<source
-							src="./audioServlet/<%=new AudioFileDAO().getRandomIdFromDb()%>"
-							type="audio/mpeg" />
+					
+						<source src="./audioServlet/<%=id.get(1)%>" type="audio/mpeg" />
 					</audio>
 					<div>
-						<img src="profilna.png" width="250px" height="250px" />
-						<div id="secondButtons">
+						<img src="./imageServlet/<%=id.get(1)%>" width="250px" height="250px" />
+						<div id="buttons">
 							<img src="play.png" width="50px" height="50px"
 								onClick="document.getElementById('audio_play1').play(); return false;" />
 
@@ -297,11 +301,31 @@
 						</div>
 					</div>
 				</div>
+				<h3 id="trackTitle"><%=dao.getSongById(id.get(1)).getName() %></h3>
 			</div>
-			<div class="col-md-2"></div>
-			<div class="col-md-2"></div>
-			<div class="col-md-2"></div>
-			<div class="col-md-2"></div>
+			<div class="col-md-4">
+				<div id="firstAudio">
+					<audio id="audio_play2">
+						
+						<source src="./audioServlet/<%=id.get(2)%>" type="audio/mpeg" />
+					</audio>
+					<div>
+						<img src="./imageServlet/<%=id.get(2)%>" width="250px" height="250px" />
+						<div id="buttons">
+							<img src="play.png" width="50px" height="50px"
+								onClick="document.getElementById('audio_play2').play(); return false;" />
+
+							<img src="pause.png" width="50px" height="50px"
+								onClick="document.getElementById('audio_play2').pause(); return false;" />
+						</div>
+					</div>
+				</div>
+				<h3 id="trackTitle"><%=dao.getSongById(id.get(2)).getName() %></h3>
+			</div>
+			</div>
+			
+			
+			
 
 
 		</div>

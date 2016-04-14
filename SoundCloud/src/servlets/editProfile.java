@@ -42,15 +42,21 @@ public class editProfile extends HttpServlet {
 			e1.printStackTrace();
 		}
 		Part pic = request.getPart("pic");
-		InputStream picContent = pic.getInputStream();
 		String folder = ((User) request.getSession().getAttribute("user")).getUserName();
 		File uploads = new File("E:\\STORAGE\\" + folder);
 
 		File picFile = new File(uploads, "profile.jpg");
+		if(pic.getSize()>0){
+			
+		
+		InputStream picContent = pic.getInputStream();
+		
+		
 		picFile.delete();
 		uploads.mkdirs();
 		try (InputStream picInput = pic.getInputStream()) {
 			Files.copy(picContent, picFile.toPath());
+		}
 		}
 		if (userToBeUpdated != null) {
 			userToBeUpdated.setFirstName(request.getParameter("firstname"));
@@ -60,6 +66,8 @@ public class editProfile extends HttpServlet {
 			}
 			userToBeUpdated.setMail(request.getParameter("email"));
 			userToBeUpdated.setGender(request.getParameter("gender"));
+			
+
 			userToBeUpdated.setPicPath(picFile.getAbsolutePath());
 		}
 		try {
